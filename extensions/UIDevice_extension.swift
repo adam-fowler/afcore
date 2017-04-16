@@ -3,7 +3,7 @@
 //  Viewfinder
 //
 //  Created by Adam Fowler on 06/04/2017.
-//  Copyright © 2017 Adam Fowler. All rights reserved.
+//  Code from http://stackoverflow.com/questions/37215952/ipad-retina-model-recognition-with-swift
 //
 
 import UIKit

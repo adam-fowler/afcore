@@ -2,8 +2,8 @@
 //  UIBarButtonSystemItem_extension.swift
 //  extensions
 //
-//  Created by Adam Fowler on 15/04/2017.
-//  Copyright © 2017 Adam Fowler. All rights reserved.
+//  Created by Adam Fowler on 15/04/2017
+//  Code from http://stackoverflow.com/questions/21187885/use-uibarbuttonitem-icon-in-uibutton
 //
 
 import UIKit
