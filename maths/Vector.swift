@@ -54,6 +54,10 @@ public class Vector {
         }
     }
     
+    public func set(_ index : Int, _ value : Double) {
+        elements[index] = value
+    }
+    
     func operate(operation: (Double)->Double) {
         for i in 0..<count {
             elements[i] = operation(elements[i])

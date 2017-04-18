@@ -33,6 +33,10 @@ public class Matrix {
         }
     }
 
+    public func set(_ xIndex : Int, _ yIndex : Int, _ value : Double) {
+        elements[yIndex].set(xIndex, value)
+    }
+    
     public func row(_ index:Int) -> Vector {
         return elements[index]
     }
@@ -40,7 +44,7 @@ public class Matrix {
     public func column(_ index:Int) -> Vector {
         let column = Vector(size: count)
         for i in 0..<count {
-            column[i] = elements[i][index]
+            column.set(i, elements[i][index])
         }
         return column
     }
@@ -76,7 +80,7 @@ public class Matrix {
         assert(left[0].count == right.count)
         let result = Vector(size: left.count)
         for i in 0..<left.count {
-            result[i] = Vector.Dot(left.row(i), right)
+            result.set(i, Vector.Dot(left.row(i), right))
         }
         return result
     }
@@ -85,7 +89,7 @@ public class Matrix {
         assert(left.count == right.count)
         let result = Vector(size: right[0].count)
         for i in 0..<right[0].count {
-            result[i] = Vector.Dot(left, right.column(i))
+            result.set(i, Vector.Dot(left, right.column(i)))
         }
         return result
     }
@@ -96,7 +100,7 @@ public class Matrix {
         let result = Matrix(xSize: left.count, ySize: right[0].count)
         for i in 0..<left.count {
             for j in 0..<right[0].count {
-                result[j][i] = Vector.Dot(left.row(i), right.column(j))
+                result.set(i, j, Vector.Dot(left.row(i), right.column(j)))
                 print("Dot \(left.row(i)) and \(right.column(j)) = \(result[j][i])")
             }
         }
