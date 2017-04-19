@@ -44,6 +44,6 @@ class mathsTests: XCTestCase {
     func testPolynomialFit() {
         let polyFit = PolynomialFit(points: [Vector2d(x:0,y:1), Vector2d(x:1,y:6), Vector2d(x:2,y:17), Vector2d(x:3,y:34), Vector2d(x:4,y:57)])
         let v = polyFit.solve(order:4)
-        XCTAssert(abs(v[0] - 1.0) < 0.000001 && abs(v[1] - 2.0) < 0.000001 && abs(v[2] - 3.0) < 0.000001)
+        XCTAssert(abs(v[0] - 1.0) < 0.000001 && abs(v[1] - 2.0) < 0.000001 && abs(v[2] - 3.0) < 0.000001 && abs(v[3]) < 0.000001 && abs(v[4]) < 0.000001)
     }
 }
