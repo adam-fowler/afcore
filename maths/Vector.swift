@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 public class Vector : Copying {
     public init(_ elements: [Double]) {
         self.elements = elements
@@ -20,44 +19,51 @@ public class Vector : Copying {
             elements.append(element)
         }
     }
-
+    
     public init(size: Int) {
         elements = Array(repeating:0.0, count:size)
     }
-
+    
     init(_ left: Vector, _ right: Vector, operation: (Double,Double)->Double) {
         assert(left.count == right.count)
         
-        elements = Array(repeating:0.0, count:left.count)
+        elements = []
+        elements.reserveCapacity(left.count)
         for i in 0..<left.count {
-            elements[i] = operation(left[i], right[i])
+            elements.append(operation(left[i], right[i]))
         }
     }
     
     init(_ left: Double, _ right: Vector, operation: (Double,Double)->Double) {
-        elements = Array(repeating:0.0, count:right.count)
+        elements = []
+        elements.reserveCapacity(right.count)
         for i in 0..<right.count {
-            elements[i] = operation(left, right[i])
+            elements.append(operation(left, right[i]))
         }
     }
     
     init(_ left: Vector, _ right: Double, operation: (Double,Double)->Double) {
-        elements = Array(repeating:0.0, count:left.count)
+        elements = []
+        elements.reserveCapacity(left.count)
         for i in 0..<left.count {
-            elements[i] = operation(left[i], right)
+            elements.append(operation(left[i], right))
         }
     }
     
     init(_ left: Vector, operation: (Double)->Double) {
-        elements = Array(repeating:0.0, count:left.count)
+        elements = []
+        elements.reserveCapacity(left.count)
         for i in 0..<left.count {
-            elements[i] = operation(left[i])
+            elements.append(operation(left[i]))
         }
     }
     
     public subscript(index:Int) -> Double {
         get {
             return elements[index]
+        }
+        set(value) {
+            elements[index] = value
         }
     }
     
@@ -90,6 +96,10 @@ public class Vector : Copying {
     
     public static func - (left: Vector, right: Vector) -> Vector {
         return Vector(left, right, operation:{a, b in return a-b})
+    }
+    
+    public static func * (left: Vector, right: Vector) -> Vector {
+        return Vector(left, right, operation:{a, b in return a*b})
     }
     
     public static func * (left: Double, right: Vector) -> Vector {
@@ -141,35 +151,35 @@ public class Vector : Copying {
     }
     
     public func Sum() -> Double {
-        var value = 0.0
-        for element in elements {
-            value += element
+        var value = elements[0]
+        for i in 1..<count {
+            value += elements[i]
         }
         return value
     }
-
+    
     public static func Dot(_ left: Vector, _ right: Vector) -> Double {
-        let dot = Vector(left, right, operation:{a,b in return a*b})
+        let dot = left * right
         return dot.Sum()
     }
     
     public func Magnitude() -> Double {
-        let magnitudeSq = Vector(self, operation:{a in return a*a})
-        return sqrt(magnitudeSq.Sum())
+        let mag = Vector(self, operation:{a in return a*a})
+        return sqrt(mag.Sum())
     }
-    
+
     private(set) var elements : [Double]
     public var count : Int { get {return elements.count } }
-
+    
 }
 
 extension Vector : CustomDebugStringConvertible {
     public var debugDescription: String {
-        var description = "Vector:("
+        var description = "["
         for i in 0..<count-1 {
-            description += "\(String(format:"%f", elements[i])),"
+            description += "\(elements[i].debugDescription),"
         }
-        description += "\(String(format:"%f", elements.last!)))"
+        description += "\(elements.last!.debugDescription)]"
         return description
     }
 }

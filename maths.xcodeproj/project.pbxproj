@@ -14,6 +14,7 @@
 		D12E232A1EA65C7300D99E80 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12E23291EA65C7300D99E80 /* Matrix.swift */; };
 		D12E232C1EA65C8B00D99E80 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12E232B1EA65C8B00D99E80 /* Vector.swift */; };
 		D157C0CE1EA6D01A00B445A9 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = D157C0CD1EA6D01A00B445A9 /* Array.swift */; };
+		D157C0D51EA82C0D00B445A9 /* VectorGeneric.swift in Sources */ = {isa = PBXBuildFile; fileRef = D157C0D41EA82C0D00B445A9 /* VectorGeneric.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		D12E232B1EA65C8B00D99E80 /* Vector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
 		D12E23331EA68BE500D99E80 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = SOURCE_ROOT; };
 		D157C0CD1EA6D01A00B445A9 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		D157C0D41EA82C0D00B445A9 /* VectorGeneric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VectorGeneric.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				D12E23291EA65C7300D99E80 /* Matrix.swift */,
 				D12E231E1EA647B700D99E80 /* Vector2d.swift */,
 				D12E232B1EA65C8B00D99E80 /* Vector.swift */,
+				D157C0D41EA82C0D00B445A9 /* VectorGeneric.swift */,
 				D12E23331EA68BE500D99E80 /* MyPlayground.playground */,
 			);
 			path = maths;
@@ -212,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D157C0D51EA82C0D00B445A9 /* VectorGeneric.swift in Sources */,
 				D12E231F1EA647B700D99E80 /* Vector2d.swift in Sources */,
 				D157C0CE1EA6D01A00B445A9 /* Array.swift in Sources */,
 				D12E231D1EA6475B00D99E80 /* PolynomialFit.swift in Sources */,

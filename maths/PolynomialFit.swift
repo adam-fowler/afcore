@@ -13,7 +13,12 @@ public class PolynomialFit {
         xPoints = Vector(points.map{$0.x})
         yPoints = Vector(points.map{$0.y})
     }
-
+    
+    public init(xPoints: Vector, yPoints: Vector) {
+        self.xPoints = xPoints
+        self.yPoints = yPoints
+    }
+    
     public func solve(order: Int) -> Vector {
         assert(order < xPoints.count)
         var summedXPowers : [Double] = []
@@ -33,17 +38,17 @@ public class PolynomialFit {
         }
 
         let matrix = Matrix(xSize: order+1, ySize: order+1)
-        matrix.set(0,0, Double(xPoints.count))
+        matrix[0][0] = Double(xPoints.count)
         for i in 0..<order+1 {
             for j in 0..<order+1 {
                 if i + j != 0 {
-                    matrix.set(i,j, summedXPowers[i+j-1])
+                    matrix[j][i] = summedXPowers[i+j-1]
                 }
             }
         }
         
         let inverse = matrix.inverse()
-        return inverse * Vector(summedXYPowers)
+        return inverse! * Vector(summedXYPowers)
     }
     
     var xPoints : Vector

@@ -15,6 +15,7 @@ public class Matrix : Copying {
     
     public required init(original: Matrix) {
         elements = []
+        elements.reserveCapacity(original.count)
         for element in original.elements {
             elements.append(element.copy())
         }
@@ -22,6 +23,7 @@ public class Matrix : Copying {
     
     public init(xSize: Int, ySize: Int) {
         elements = []
+        elements.reserveCapacity(ySize)
         for _ in 1...ySize {
             elements.append(Vector(size: xSize))
         }
@@ -32,6 +34,7 @@ public class Matrix : Copying {
         assert(left[0].count == right[0].count)
         
         elements = []//Array(repeating:Vector(size:left[0].count), count:left.count)
+        elements.reserveCapacity(left.count)
         for i in 0..<left.count {
             elements.append(operation(left[i], right[i]))
         }
@@ -39,6 +42,7 @@ public class Matrix : Copying {
     
     init(_ left: Double, _ right: Matrix, operation: (Double,Vector)->Vector) {
         elements = []
+        elements.reserveCapacity(right.count)
         for i in 0..<right.count {
             elements.append(operation(left, right[i]))
         }
@@ -46,6 +50,7 @@ public class Matrix : Copying {
     
     init(_ left: Matrix, _ right: Double, operation: (Vector,Double)->Vector) {
         elements = []
+        elements.reserveCapacity(left.count)
         for i in 0..<left.count {
             elements.append(operation(left[i], right))
         }
@@ -54,6 +59,9 @@ public class Matrix : Copying {
     public subscript(index:Int) -> Vector {
         get {
             return elements[index]
+        }
+        set(value) {
+            elements[index] = value
         }
     }
 
@@ -68,7 +76,7 @@ public class Matrix : Copying {
     public func column(_ index:Int) -> Vector {
         let column = Vector(size: count)
         for i in 0..<count {
-            column.set(i, elements[i][index])
+            column[i] = elements[i][index]
         }
         return column
     }
@@ -116,7 +124,7 @@ public class Matrix : Copying {
         assert(left[0].count == right.count)
         let result = Vector(size: left.count)
         for i in 0..<left.count {
-            result.set(i, Vector.Dot(left.row(i), right))
+            result[i] = Vector.Dot(left.row(i), right)
         }
         return result
     }
@@ -125,7 +133,7 @@ public class Matrix : Copying {
         assert(left.count == right.count)
         let result = Vector(size: right[0].count)
         for i in 0..<right[0].count {
-            result.set(i, Vector.Dot(left, right.column(i)))
+            result[i] = Vector.Dot(left, right.column(i))
         }
         return result
     }
@@ -136,20 +144,24 @@ public class Matrix : Copying {
         let result = Matrix(xSize: left.count, ySize: right[0].count)
         for i in 0..<left.count {
             for j in 0..<right[0].count {
-                result.set(i, j, Vector.Dot(left.row(i), right.column(j)))
+                result[j][i] = Vector.Dot(left.row(i), right.column(j))
             }
         }
         return result
     }
     
-    public func inverse() -> Matrix {
+    public func inverse() -> Matrix? {
         // got this from https://www.cs.rochester.edu/~brown/Crypto/assts/projects/adj.html
+        let d = determinant()
+        if d == 0.0 {
+            return nil
+        }
         return adjoint() / determinant()
     }
     
     public func determinant() -> Double {
         assert(elements[0].count == count)
-        var d : Double = 0.0
+        var d = 0.0
         /*
          Recursive definition of determinate using expansion by minors.
          */
@@ -160,12 +172,12 @@ public class Matrix : Copying {
         } else {
             for j1 in 0..<count {
                 let m = Matrix(xSize: count-1, ySize: count-1)
-
+                
                 for i in 1..<count {
                     var j2 = 0
                     for j in 0..<count {
                         if (j == j1) { continue }
-                        m.set(j2,i-1, self[i][j])
+                        m[i-1][j2] = self[i][j]
                         j2 += 1
                     }
                 }
@@ -174,7 +186,7 @@ public class Matrix : Copying {
         }
         return d
     }
-
+    
     public func adjoint() -> Matrix {
         assert(elements[0].count == count)
         let b = Matrix(xSize: count, ySize: count)
@@ -190,7 +202,7 @@ public class Matrix : Copying {
                     var j1 = 0;
                     for jj in 0..<count  {
                         if jj == j { continue }
-                        c.set(j1,i1 ,self[ii][jj])
+                        c[i1][j1] = self[ii][jj]
                         j1 += 1;
                     }
                     i1 += 1;
@@ -200,15 +212,16 @@ public class Matrix : Copying {
                 let d = c.determinant();
                 
                 /* Fill in the elements of the cofactor */
-                b.set(i, j, pow(-1.0,Double(i+j)+2.0) * d)
+                b[j][i] = pow(-1.0,Double(i+j)+2.0) * d
             }
         }
         return b
     }
-
+    
     public func transpose() -> Matrix {
         assert(elements[0].count == count)
         var rows : [Vector] = []
+        rows.reserveCapacity(count)
         for i in 0..<count {
             rows.append(column(i))
         }
@@ -221,11 +234,12 @@ public class Matrix : Copying {
 
 extension Matrix  : CustomDebugStringConvertible {
     public var debugDescription: String {
-        var description = "Matrix:("
+        var description = "["
         for i in 0..<count-1 {
             description += "\(elements[i]),\n"
         }
-        description += "\(elements.last!))\n"
+        description += "\(elements.last!)]\n"
         return description
     }
 }
+

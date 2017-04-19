@@ -13,9 +13,9 @@ import XCTest
 class mathsTests: XCTestCase {
     
     func testEquality() {
-        let a = ([1,5,6,7])
-        let b = ([1,5,6,7])
-        let c = ([5,2,9,10])
+        let a = Vector([1,5,6,7])
+        let b = Vector([1,5,6,7])
+        let c = Vector([5,2,9,10])
         XCTAssert(a == b && a != c)
     }
     
@@ -28,19 +28,13 @@ class mathsTests: XCTestCase {
         //print(a.Magnitude())
     }
     
-    func testMagnitude() {
-        let a = Vector([1,4,5,6,7])
-        let mag = a.Magnitude()
-        XCTAssert(mag == sqrt(1+16+25+36+49))
-    }
-    
     func testMatrixInverse() {
         let matrix = Matrix([Vector([2,4,10]),Vector([4,10,28]),Vector([10,28,80])])
         let vector = Vector([6,0,25])
         
-        XCTAssert(vector * matrix * matrix.inverse() == vector)
+        XCTAssert(vector * matrix * matrix.inverse()! == vector)
     }
-    
+   
     func testPolynomialFit() {
         let polyFit = PolynomialFit(points: [Vector2d(x:0,y:1), Vector2d(x:1,y:6), Vector2d(x:2,y:17), Vector2d(x:3,y:34), Vector2d(x:4,y:57)])
         let v = polyFit.solve(order:4)
