@@ -143,6 +143,7 @@ public class Matrix : Copying {
     }
     
     public func inverse() -> Matrix {
+        // got this from https://www.cs.rochester.edu/~brown/Crypto/assts/projects/adj.html
         return adjoint() / determinant()
     }
     

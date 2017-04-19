@@ -3,7 +3,7 @@
 //  maths
 //
 //  Created by Adam Fowler on 18/04/2017.
-//  Copyright © 2017 Adam Fowler. All rights reserved.
+//  Code based on this page https://rosettacode.org/wiki/Polynomial_regression
 //
 
 import Foundation
@@ -13,7 +13,7 @@ public class PolynomialFit {
         xPoints = Vector(points.map{$0.x})
         yPoints = Vector(points.map{$0.y})
     }
-    
+
     public func solve(order: Int) -> Vector {
         assert(order < xPoints.count)
         var summedXPowers : [Double] = []
