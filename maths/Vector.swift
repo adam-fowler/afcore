@@ -124,6 +124,22 @@ public class Vector : Copying {
         return Vector(left, operation:{a in return -a})
     }
     
+    public static func == (left: Vector, right: Vector) -> Bool {
+        if left.count != right.count {
+            return false
+        }
+        for i in 0..<left.count {
+            if left.elements[i] != right.elements[i] {
+                return false
+            }
+        }
+        return true
+    }
+    
+    public static func != (left: Vector, right: Vector) -> Bool {
+        return !(left == right)
+    }
+    
     public func Sum() -> Double {
         var value = 0.0
         for element in elements {
