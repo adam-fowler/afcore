@@ -8,22 +8,46 @@
 
 import Foundation
 
-public class Matrix {
+public class Matrix : Copying {
     public init(_ elements: [Vector]) {
         self.elements = elements
     }
     
+    public required init(original: Matrix) {
+        elements = []
+        for element in original.elements {
+            elements.append(element.copy())
+        }
+    }
+    
     public init(xSize: Int, ySize: Int) {
-        elements = Array(repeating:Vector(size: xSize), count:ySize)
+        elements = []
+        for _ in 1...ySize {
+            elements.append(Vector(size: xSize))
+        }
     }
     
     init(_ left: Matrix, _ right: Matrix, operation: (Vector,Vector)->Vector) {
         assert(left.count == right.count)
         assert(left[0].count == right[0].count)
         
-        elements = Array(repeating:Vector(size:left[0].count), count:left.count)
+        elements = []//Array(repeating:Vector(size:left[0].count), count:left.count)
         for i in 0..<left.count {
-            elements[i] = operation(left[i], right[i])
+            elements.append(operation(left[i], right[i]))
+        }
+    }
+    
+    init(_ left: Double, _ right: Matrix, operation: (Double,Vector)->Vector) {
+        elements = []
+        for i in 0..<right.count {
+            elements.append(operation(left, right[i]))
+        }
+    }
+    
+    init(_ left: Matrix, _ right: Double, operation: (Vector,Double)->Vector) {
+        elements = []
+        for i in 0..<left.count {
+            elements.append(operation(left[i], right))
         }
     }
     
@@ -76,6 +100,18 @@ public class Matrix {
         return Matrix(left, right, operation:{a, b in return a-b})
     }
     
+    public static func * (left: Matrix, right: Double) -> Matrix {
+        return Matrix(left, right, operation:{a, b in return a*b})
+    }
+    
+    public static func * (left: Double, right: Matrix) -> Matrix {
+        return Matrix(left, right, operation:{a, b in return a*b})
+    }
+    
+    public static func / (left: Matrix, right: Double) -> Matrix {
+        return Matrix(left, right, operation:{a, b in return a/b})
+    }
+    
     public static func * (left:Matrix, right: Vector) -> Vector {
         assert(left[0].count == right.count)
         let result = Vector(size: left.count)
@@ -101,10 +137,81 @@ public class Matrix {
         for i in 0..<left.count {
             for j in 0..<right[0].count {
                 result.set(i, j, Vector.Dot(left.row(i), right.column(j)))
-                print("Dot \(left.row(i)) and \(right.column(j)) = \(result[j][i])")
             }
         }
         return result
+    }
+    
+    public func inverse() -> Matrix {
+        return adjoint() / determinant()
+    }
+    
+    public func determinant() -> Double {
+        assert(elements[0].count == count)
+        var d : Double = 0.0
+        /*
+         Recursive definition of determinate using expansion by minors.
+         */
+        if count == 1 { /* Shouldn't get used */
+            d = self[0][0];
+        } else if count == 2 {
+            d = self[0][0] * self[1][1] - self[1][0] * self[0][1];
+        } else {
+            for j1 in 0..<count {
+                let m = Matrix(xSize: count-1, ySize: count-1)
+
+                for i in 1..<count {
+                    var j2 = 0
+                    for j in 0..<count {
+                        if (j == j1) { continue }
+                        m.set(j2,i-1, self[i][j])
+                        j2 += 1
+                    }
+                }
+                d += pow(-1.0,Double(j1)+2.0) * self[0][j1] * m.determinant()
+            }
+        }
+        return d
+    }
+
+    public func adjoint() -> Matrix {
+        assert(elements[0].count == count)
+        let b = Matrix(xSize: count, ySize: count)
+        let c = Matrix(xSize: count-1, ySize: count-1)
+        
+        for j in 0..<count {
+            for i in 0..<count {
+                
+                /* Form the adjoint a_ij */
+                var i1 = 0
+                for ii in 0..<count {
+                    if ii == i { continue }
+                    var j1 = 0;
+                    for jj in 0..<count  {
+                        if jj == j { continue }
+                        c.set(j1,i1 ,self[ii][jj])
+                        j1 += 1;
+                    }
+                    i1 += 1;
+                }
+                
+                /* Calculate the determinate */
+                let d = c.determinant();
+                
+                /* Fill in the elements of the cofactor */
+                b.set(i, j, pow(-1.0,Double(i+j)+2.0) * d)
+            }
+        }
+        return b
+    }
+
+    public func transpose() -> Matrix {
+        assert(elements[0].count == count)
+        var rows : [Vector] = []
+        for i in 0..<count {
+            rows.append(column(i))
+        }
+        return Matrix(rows)
     }
     
     var elements : [Vector]

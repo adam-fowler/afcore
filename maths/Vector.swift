@@ -9,9 +9,16 @@
 import Foundation
 
 
-public class Vector {
+public class Vector : Copying {
     public init(_ elements: [Double]) {
         self.elements = elements
+    }
+    
+    public required init(original: Vector) {
+        elements = []
+        for element in original.elements {
+            elements.append(element)
+        }
     }
 
     public init(size: Int) {
@@ -135,8 +142,8 @@ public class Vector {
         return sqrt(magnitudeSq.Sum())
     }
     
-    var elements : [Double]
-    var count : Int { get {return elements.count } }
+    private(set) var elements : [Double]
+    public var count : Int { get {return elements.count } }
 
 }
 

@@ -8,8 +8,8 @@
 
 import Foundation
 
-class Vector2d {
-    init(x: Double, y: Double) {
+public class Vector2d {
+    public init(x: Double, y: Double) {
         self.x = x
         self.y = y
     }
