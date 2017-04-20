@@ -9,6 +9,10 @@
 import Foundation
 
 public class Vector : Copying {
+    public init() {
+        self.elements = []
+    }
+
     public init(_ elements: [Double]) {
         self.elements = elements
     }
@@ -177,9 +181,9 @@ extension Vector : CustomDebugStringConvertible {
     public var debugDescription: String {
         var description = "["
         for i in 0..<count-1 {
-            description += "\(elements[i].debugDescription),"
+            description += "\(String(format:"%0.3f", elements[i])),"
         }
-        description += "\(elements.last!.debugDescription)]"
+        description += "\(String(format:"%0.3f", elements.last!))]"
         return description
     }
 }
