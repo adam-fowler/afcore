@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		D12E230C1EA646F700D99E80 /* maths.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12E23021EA646F700D99E80 /* maths.framework */; };
 		D12E23111EA646F700D99E80 /* mathsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12E23101EA646F700D99E80 /* mathsTests.swift */; };
-		D12E231D1EA6475B00D99E80 /* PolynomialFit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12E231C1EA6475B00D99E80 /* PolynomialFit.swift */; };
+		D12E231D1EA6475B00D99E80 /* PolynomialFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12E231C1EA6475B00D99E80 /* PolynomialFunction.swift */; };
 		D12E231F1EA647B700D99E80 /* Vector2d.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12E231E1EA647B700D99E80 /* Vector2d.swift */; };
 		D12E232A1EA65C7300D99E80 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12E23291EA65C7300D99E80 /* Matrix.swift */; };
 		D12E232C1EA65C8B00D99E80 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12E232B1EA65C8B00D99E80 /* Vector.swift */; };
@@ -33,7 +33,7 @@
 		D12E230B1EA646F700D99E80 /* mathsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mathsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D12E23101EA646F700D99E80 /* mathsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mathsTests.swift; sourceTree = "<group>"; };
 		D12E23121EA646F700D99E80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D12E231C1EA6475B00D99E80 /* PolynomialFit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolynomialFit.swift; sourceTree = "<group>"; };
+		D12E231C1EA6475B00D99E80 /* PolynomialFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolynomialFunction.swift; sourceTree = "<group>"; };
 		D12E231E1EA647B700D99E80 /* Vector2d.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector2d.swift; sourceTree = "<group>"; };
 		D12E23291EA65C7300D99E80 /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
 		D12E232B1EA65C8B00D99E80 /* Vector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 			children = (
 				D12E23061EA646F700D99E80 /* Info.plist */,
 				D157C0CD1EA6D01A00B445A9 /* Array.swift */,
-				D12E231C1EA6475B00D99E80 /* PolynomialFit.swift */,
+				D12E231C1EA6475B00D99E80 /* PolynomialFunction.swift */,
 				D12E23291EA65C7300D99E80 /* Matrix.swift */,
 				D12E231E1EA647B700D99E80 /* Vector2d.swift */,
 				D12E232B1EA65C8B00D99E80 /* Vector.swift */,
@@ -218,7 +218,7 @@
 				D157C0D51EA82C0D00B445A9 /* VectorGeneric.swift in Sources */,
 				D12E231F1EA647B700D99E80 /* Vector2d.swift in Sources */,
 				D157C0CE1EA6D01A00B445A9 /* Array.swift in Sources */,
-				D12E231D1EA6475B00D99E80 /* PolynomialFit.swift in Sources */,
+				D12E231D1EA6475B00D99E80 /* PolynomialFunction.swift in Sources */,
 				D12E232C1EA65C8B00D99E80 /* Vector.swift in Sources */,
 				D12E232A1EA65C7300D99E80 /* Matrix.swift in Sources */,
 			);
