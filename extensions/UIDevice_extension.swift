@@ -3,7 +3,7 @@
 //  Viewfinder
 //
 //  Created by Adam Fowler on 06/04/2017.
-//  Code from http://stackoverflow.com/questions/37215952/ipad-retina-model-recognition-with-swift
+//  Code from http://stackoverflow.com/questions/26028918/ios-how-to-determine-the-current-iphone-device-model-in-swift
 //
 
 import UIKit
