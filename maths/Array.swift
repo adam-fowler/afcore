@@ -3,7 +3,7 @@
 //  maths
 //
 //  Created by Adam Fowler on 18/04/2017.
-//  Copyright © 2017 Adam Fowler. All rights reserved.
+//  Code taken from http://stackoverflow.com/questions/27812433/how-do-i-make-a-exact-duplicate-copy-of-an-array
 //
 
 import Foundation
