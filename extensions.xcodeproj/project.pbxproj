@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D1A24C881EB8ACEF00F38960 /* Data_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A24C871EB8ACEF00F38960 /* Data_extension.swift */; };
 		D1C0552F1EA2811F0043DC91 /* UIDevice_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C0552D1EA2811F0043DC91 /* UIDevice_extension.swift */; };
 		D1C055301EA2811F0043DC91 /* CGPoint_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C0552E1EA2811F0043DC91 /* CGPoint_extension.swift */; };
 		D1C055361EA284670043DC91 /* Enum_conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C055351EA284670043DC91 /* Enum_conversion.swift */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D1A24C871EB8ACEF00F38960 /* Data_extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data_extension.swift; sourceTree = "<group>"; };
 		D1C0551C1EA280CD0043DC91 /* extensions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = extensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1C055201EA280CD0043DC91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1C0552D1EA2811F0043DC91 /* UIDevice_extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDevice_extension.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				D1C0552E1EA2811F0043DC91 /* CGPoint_extension.swift */,
+				D1A24C871EB8ACEF00F38960 /* Data_extension.swift */,
 				D1C055351EA284670043DC91 /* Enum_conversion.swift */,
 				D1C055391EA285A10043DC91 /* String_extension.swift */,
 				D1C055371EA2852B0043DC91 /* UIBarButtonSystemItem_extension.swift */,
@@ -147,6 +150,7 @@
 				D1C055301EA2811F0043DC91 /* CGPoint_extension.swift in Sources */,
 				D1C0553A1EA285A10043DC91 /* String_extension.swift in Sources */,
 				D1C055361EA284670043DC91 /* Enum_conversion.swift in Sources */,
+				D1A24C881EB8ACEF00F38960 /* Data_extension.swift in Sources */,
 				D1C0552F1EA2811F0043DC91 /* UIDevice_extension.swift in Sources */,
 				D1C055381EA2852B0043DC91 /* UIBarButtonSystemItem_extension.swift in Sources */,
 			);
