@@ -62,7 +62,7 @@ public class DebugView {
         
         // create name labels
         for i in 0..<min(numLabels,widgets.count) {
-            let nameLabel = UILabel(frame: CGRect(x:4, y:4 + CGFloat(i)*labelHeight, width:width/2, height:24))
+            let nameLabel = UILabel(frame: CGRect(x:4, y:4 + CGFloat(i)*labelHeight, width:width/2, height:labelHeight))
             nameLabel.text = widgets[i].getName()
             nameLabel.font = nameLabel.font.withSize(12)
             nameLabel.textColor = UIColor.white
@@ -76,7 +76,7 @@ public class DebugView {
         
         // create value labels
         for i in 0..<min(numLabels,widgets.count) {
-            let valueLabel = UILabel(frame: CGRect(x:maxWidth+8, y:4 + CGFloat(i)*labelHeight, width:width-maxWidth, height:24))
+            let valueLabel = UILabel(frame: CGRect(x:maxWidth+8, y:4 + CGFloat(i)*labelHeight, width:width-maxWidth, height:labelHeight))
             valueLabel.font = valueLabel.font.withSize(12)
             valueLabel.textColor = UIColor.white
             valueLabels.append(valueLabel)
