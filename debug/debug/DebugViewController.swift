@@ -28,27 +28,33 @@ public class DebugWidget<T> : DebugWidgetDisplay {
 
 public class DebugView {
     public init(parent: UIView, frame: CGRect) {
-#if DEBUG
-        view = UIView(frame: frame)
-        view.backgroundColor = UIColor(red:0.0,green:0.0,blue:0.0,alpha:0.5)
-        parent.addSubview(view!)
-#endif
+        #if DEBUG
+            view = UIView(frame: frame)
+            view.backgroundColor = UIColor(red:0.0,green:0.0,blue:0.0,alpha:0.5)
+            parent.addSubview(view!)
+            view.isHidden = true
+        #endif
     }
     
     public func viewWillAppear() {
-#if DEBUG
-        createLabels()
-        //update debug parameters params every 1 second
-        timer = Timer.scheduledTimer(timeInterval:0.1, target:self, selector:#selector(self.updateLabels), userInfo:nil, repeats:true)
-        updateLabels()
-#endif
+        #if DEBUG
+            if DebugView.displayDebug == false {
+                return
+            }
+            createLabels()
+            //update debug parameters params every 1 second
+            timer = Timer.scheduledTimer(timeInterval:0.1, target:self, selector:#selector(self.updateLabels), userInfo:nil, repeats:true)
+            updateLabels()
+            view.isHidden = false
+        #endif
     }
     
     public func viewWillDisappear() {
-#if DEBUG
-        timer?.invalidate()
-        removeLabels()
-#endif
+        #if DEBUG
+            view.isHidden = true
+            timer?.invalidate()
+            removeLabels()
+        #endif
     }
     
     func createLabels() {
@@ -112,9 +118,9 @@ public class DebugView {
     }
     
     public func addWidget<T>(_ widget: DebugWidget<T>) {
-#if DEBUG
-        widgets.append(widget)
-#endif
+        #if DEBUG
+            widgets.append(widget)
+        #endif
     }
     
     var widgets : [DebugWidgetDisplay] = []
@@ -122,6 +128,8 @@ public class DebugView {
     var nameLabels : [UILabel] = []
     var valueLabels : [UILabel] = []
     var view : UIView!
+    
+    public static var displayDebug = false
 }
 
 // UIViewController extension to add debugView variable
