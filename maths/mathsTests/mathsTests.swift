@@ -34,10 +34,27 @@ class mathsTests: XCTestCase {
         
         XCTAssert(vector * matrix * matrix.inverse()! == vector)
     }
-   
+
+    func testPolynomialSolve() {
+        let v = PolynomialFunction.compute(coeffs: Vector([0,1,5,0.5,4]), x:2)
+        XCTAssert(v == 90.0)
+    }
+    
     func testPolynomialFit() {
-        let polyFit = PolynomialFit(points: [Vector2d(x:0,y:1), Vector2d(x:1,y:6), Vector2d(x:2,y:17), Vector2d(x:3,y:34), Vector2d(x:4,y:57)])
-        let v = polyFit.solve(order:4)
+        let v = PolynomialFunction.fit(xPoints: Vector([0,1,2,3,4]), yPoints:Vector([1,6,17,34,57]), order:4)
+        
         XCTAssert(abs(v[0] - 1.0) < 0.000001 && abs(v[1] - 2.0) < 0.000001 && abs(v[2] - 3.0) < 0.000001 && abs(v[3]) < 0.000001 && abs(v[4]) < 0.000001)
+    }
+    
+    func testPolynomialNewtonRaphson() {
+        let threshold = 0.001
+        for i in 1...5 {
+            var coeffs = Vector([-2,1,5,0.5,4])
+            var x = Double(i)
+            let y = PolynomialFunction.compute(coeffs: coeffs, x: x)
+            coeffs[0] -= y
+            let x2 = PolynomialFunction.solveNewtonRaphson(coeffs: Vector([-2-y,1,5,0.5,4]), initialValue:0, threshold:threshold)
+            XCTAssert(abs(x - x2) < threshold)
+        }
     }
 }
