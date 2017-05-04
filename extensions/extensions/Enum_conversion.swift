@@ -19,7 +19,17 @@ extension UIDeviceOrientation {
         default: return nil
         }
     }
+    public var imageOrientation: UIImageOrientation? {
+        switch self {
+        case .portrait: return .right
+        case .portraitUpsideDown: return .left
+        case .landscapeLeft: return .up
+        case .landscapeRight: return .down
+        default: return nil
+        }
+    }
 }
+
 
 extension UIInterfaceOrientation {
     public var videoOrientation: AVCaptureVideoOrientation? {
