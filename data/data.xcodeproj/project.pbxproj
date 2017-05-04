@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		D11988341EB9CC95005FE07F /* aes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11988331EB9CC95005FE07F /* aes.swift */; };
+		D15188D21EBB1B9600C6B02F /* compress.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15188D11EBB1B9600C6B02F /* compress.swift */; };
+		D15D9B6A1EBB247200587C71 /* CommonCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D119883F1EB9CCFA005FE07F /* CommonCrypto.framework */; };
+		D15D9B751EBB783E00587C71 /* dataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15D9B741EBB783E00587C71 /* dataTests.swift */; };
+		D15D9B771EBB783E00587C71 /* data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D11988131EB9CC2C005FE07F /* data.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +43,13 @@
 			remoteGlobalIDString = 444A79031D881A39003983A2;
 			remoteInfo = "CommonCrypto-macOS";
 		};
+		D15D9B781EBB783E00587C71 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D119880A1EB9CC2C005FE07F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D11988121EB9CC2C005FE07F;
+			remoteInfo = data;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +57,10 @@
 		D11988171EB9CC2C005FE07F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D11988331EB9CC95005FE07F /* aes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = aes.swift; sourceTree = "<group>"; };
 		D11988351EB9CCFA005FE07F /* CommonCrypto.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CommonCrypto.xcodeproj; path = CommonCrypto/CommonCrypto.xcodeproj; sourceTree = "<group>"; };
+		D15188D11EBB1B9600C6B02F /* compress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = compress.swift; sourceTree = "<group>"; };
+		D15D9B721EBB783E00587C71 /* dataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = dataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D15D9B741EBB783E00587C71 /* dataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataTests.swift; sourceTree = "<group>"; };
+		D15D9B761EBB783E00587C71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +68,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D15D9B6A1EBB247200587C71 /* CommonCrypto.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D15D9B6F1EBB783E00587C71 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D15D9B771EBB783E00587C71 /* data.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +88,7 @@
 			children = (
 				D11988351EB9CCFA005FE07F /* CommonCrypto.xcodeproj */,
 				D11988151EB9CC2C005FE07F /* data */,
+				D15D9B731EBB783E00587C71 /* dataTests */,
 				D11988141EB9CC2C005FE07F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -72,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				D11988131EB9CC2C005FE07F /* data.framework */,
+				D15D9B721EBB783E00587C71 /* dataTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -80,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				D11988331EB9CC95005FE07F /* aes.swift */,
+				D15188D11EBB1B9600C6B02F /* compress.swift */,
 				D11988171EB9CC2C005FE07F /* Info.plist */,
 			);
 			path = data;
@@ -94,6 +121,15 @@
 				D11988431EB9CCFA005FE07F /* CommonCrypto.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		D15D9B731EBB783E00587C71 /* dataTests */ = {
+			isa = PBXGroup;
+			children = (
+				D15D9B741EBB783E00587C71 /* dataTests.swift */,
+				D15D9B761EBB783E00587C71 /* Info.plist */,
+			);
+			path = dataTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,12 +163,31 @@
 			productReference = D11988131EB9CC2C005FE07F /* data.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		D15D9B711EBB783E00587C71 /* dataTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D15D9B7A1EBB783E00587C71 /* Build configuration list for PBXNativeTarget "dataTests" */;
+			buildPhases = (
+				D15D9B6E1EBB783E00587C71 /* Sources */,
+				D15D9B6F1EBB783E00587C71 /* Frameworks */,
+				D15D9B701EBB783E00587C71 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D15D9B791EBB783E00587C71 /* PBXTargetDependency */,
+			);
+			name = dataTests;
+			productName = dataTests;
+			productReference = D15D9B721EBB783E00587C71 /* dataTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		D119880A1EB9CC2C005FE07F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Adam Fowler";
 				TargetAttributes = {
@@ -140,6 +195,11 @@
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = QJ3Z32MXU8;
 						LastSwiftMigration = 0830;
+						ProvisioningStyle = Automatic;
+					};
+					D15D9B711EBB783E00587C71 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = QJ3Z32MXU8;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -163,6 +223,7 @@
 			projectRoot = "";
 			targets = (
 				D11988121EB9CC2C005FE07F /* data */,
+				D15D9B711EBB783E00587C71 /* dataTests */,
 			);
 		};
 /* End PBXProject section */
@@ -206,6 +267,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D15D9B701EBB783E00587C71 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -214,10 +282,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				D11988341EB9CC95005FE07F /* aes.swift in Sources */,
+				D15188D21EBB1B9600C6B02F /* compress.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D15D9B6E1EBB783E00587C71 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D15D9B751EBB783E00587C71 /* dataTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D15D9B791EBB783E00587C71 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D11988121EB9CC2C005FE07F /* data */;
+			targetProxy = D15D9B781EBB783E00587C71 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		D11988191EB9CC2C005FE07F /* Debug */ = {
@@ -362,6 +447,30 @@
 			};
 			name = Release;
 		};
+		D15D9B7B1EBB783E00587C71 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = QJ3Z32MXU8;
+				INFOPLIST_FILE = dataTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.adamfowlerphotography.dataTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		D15D9B7C1EBB783E00587C71 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = QJ3Z32MXU8;
+				INFOPLIST_FILE = dataTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.adamfowlerphotography.dataTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -382,6 +491,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		D15D9B7A1EBB783E00587C71 /* Build configuration list for PBXNativeTarget "dataTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D15D9B7B1EBB783E00587C71 /* Debug */,
+				D15D9B7C1EBB783E00587C71 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

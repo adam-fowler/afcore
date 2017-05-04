@@ -11,7 +11,7 @@ import CommonCrypto
 
 public class AES {
 
-    public static func crypt(data:Data, key:String) -> Data? {
+    public static func encrypt(data:Data, key:String) -> Data? {
         let keyData = sha256Hash(key)!
         let keyLength = size_t(kCCKeySizeAES256)
         let ivLength = size_t(kCCKeySizeAES256)
@@ -45,7 +45,6 @@ public class AES {
         
         if cryptStatus == Int32(kCCSuccess) {
             cryptData.removeSubrange(ivLength + numBytesEncrypted..<cryptData.count)
-            
         } else {
             print("Error: \(cryptStatus)")
         }
