@@ -9,8 +9,15 @@
 import Foundation
 import CommonCrypto
 
+/// class wrapping the CommonCrypto implementations of AES
+/// To use this you also need the CommonCrypto framework which wraps up the C library
 public class AES {
 
+    /// Encrypt data with CBC 256 bit key AES. IV data is randomly generated and prefixed to the crypted data
+    /// - parameters:
+    ///     - data: Data to be encrypted
+    ///     - key: Encryption key
+    /// - returns: Encrypted data
     public static func encrypt(data:Data, key:String) -> Data? {
         let keyData = sha256Hash(key)!
         let keyLength = size_t(kCCKeySizeAES256)
@@ -52,6 +59,11 @@ public class AES {
         return cryptData;
     }
 
+    /// Decrypt data generated with CBC 256 bit key AES. IV data get be found prefixed to the encrypted data
+    /// - parameters:
+    ///     - cryptData: Data to be decrypted
+    ///     - key: Encryption key
+    /// - returns: Unencrypted data
     public static func decrypt(cryptData:Data, key:String) -> Data? {
         let keyData = sha256Hash(key)!
         let keyLength = size_t(kCCKeySizeAES256)

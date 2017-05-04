@@ -11,8 +11,11 @@ import Foundation
 
 public class DataCompress {
     
-    // compress(src:algorithm:)
-    // compresses data. This function allocates all the buffers required to do the work
+    /// Compresses data. This function allocates all the buffers required to do the work
+    /// - parameters:
+    ///     - src: uncompressed data
+    ///     - algorithm: compression algorithm used
+    /// - returns: compressed data buffer or nil if there was an error
     public static func compress(src: Data, algorithm: Algorithm) -> Data? {
         let scratchBufferSize = getEncodeScratchBufferSize(algorithm: algorithm)
         var scratchBuffer = Data(count:scratchBufferSize)
@@ -21,8 +24,13 @@ public class DataCompress {
         return compress(src:src, dest:&dest, scratchBuffer:&scratchBuffer, algorithm:algorithm)
     }
     
-    // compress(src:dest:scratchBuffer:algorithm:)
-    // compresses data. This function takes all the buffers required to do the work in as parameters
+    /// Compresses data. This function takes all the buffers required to do the work in as parameters
+    /// - parameters:
+    ///     - src: uncompressed data
+    ///     - dest: buffer to save compressed data into
+    ///     - scratchBuffer: scratch buffer used by compress process
+    ///     - algorithm: compression algorithm used
+    /// - returns: compressed data buffer or nil if there was an error
     public static func compress(src: Data, dest: inout Data, scratchBuffer: inout Data, algorithm: Algorithm) -> Data? {
         let dest_size = dest.withUnsafeMutableBytes { destBytes in
             scratchBuffer.withUnsafeMutableBytes { scratchBufferBytes in
@@ -40,9 +48,13 @@ public class DataCompress {
         return dest
     }
     
-    // decompress(src:data:algorithm:)
-    // decompresses data. This function allocates all the buffers required to do the work. The function requires a 
-    // destination buffer as it assumes the user has a better idea of the size of the decompressed buffer
+    /// Decompresses data. This function allocates all the buffers required to do the work. The function requires a
+    /// destination buffer as it assumes the user has a better idea of the size of the decompressed buffer
+    /// - parameters:
+    ///     - src: compressed data
+    ///     - dest: buffer to save decompressed data into
+    ///     - algorithm: compression algorithm used
+    /// - returns: decompressed data buffer or nil if there was an error
     public static func decompress(src: Data, dest: inout Data, algorithm: Algorithm) -> Data? {
         let scratchBufferSize = getDecodeScratchBufferSize(algorithm: algorithm)
         var scratchBuffer = Data(count:scratchBufferSize)
@@ -50,8 +62,13 @@ public class DataCompress {
         return decompress(src: src, dest: &dest, scratchBuffer: &scratchBuffer, algorithm: algorithm)
     }
     
-    // decompress(src:dest:scratchBuffer:algorithm)
-    // decompresses data. This function takes all the buffers required to do the work in as parameters
+    /// Decompresses data. This function takes all the buffers required to do the work in as parameters
+    /// - parameters:
+    ///     - src: compressed data
+    ///     - dest: buffer to save decompressed data into
+    ///     - scratchBuffer: scratch buffer used by decompress process
+    ///     - algorithm: compression algorithm used
+    /// - returns: decompressed data buffer or nil if there was an error
     public static func decompress(src: Data, dest: inout Data, scratchBuffer: inout Data, algorithm: Algorithm) -> Data? {
         let dest_size = dest.withUnsafeMutableBytes { destBytes in
             scratchBuffer.withUnsafeMutableBytes { scratchBufferBytes in
@@ -69,18 +86,22 @@ public class DataCompress {
         return dest
     }
     
-    //getEncodeScratchBufferSize(algorithm:)
-    //returns the size of scratch buffer required to encode specified compression algorithm
+    
+    /// Returns the size of scratch buffer required to encode specified compression algorithm
+    /// - parameter algorithm: compression algorithm
+    /// - returns: size of scratch buffer required
     public static func getEncodeScratchBufferSize(algorithm: Algorithm) -> Int {
         return compression_encode_scratch_buffer_size(algorithm.compression_algorithm)
     }
     
-    //getDecodeScratchBufferSize(algorithm:)
-    //returns the size of scratch buffer required to decode specified compression algorithm
+    /// Returns the size of scratch buffer required to decode specified compression algorithm
+    /// - parameter algorithm: compression algorithm
+    /// - returns: size of scratch buffer required
     public static func getDecodeScratchBufferSize(algorithm: Algorithm) -> Int {
         return compression_decode_scratch_buffer_size(algorithm.compression_algorithm)
     }
     
+    /// Compression algorithms available to DataCompress
     public enum Algorithm {
         case lz4
         case zlib
@@ -99,14 +120,17 @@ public class DataCompress {
     
 }
 
-//DataCompressStream
-// Class for doing a streamed compression or decompression. You can either stream source data or destination buffers
-// This class does not support the Data class as we cannot guarantee the existence of Unsafe buffers between initialisation
-// and process
+/// Class for doing a streamed compression or decompression. You can either stream source data or destination buffers
+/// This class does not support the Data class as we cannot guarantee the existence of Unsafe buffers between initialisation
+/// and process
 public class DataCompressStream {
     
-    //init?(dest:count:operation:algorithm)
-    // initialise class for streaming source data
+    /// Initialise class for streaming source data
+    /// - parameters:
+    ///     - dest: pointer to destination buffer
+    ///     - count: size of destination buffer
+    ///     - operation: .compress or .decompress
+    ///     - algorithm: compression algorithm to use
     public init?(dest: UnsafeMutablePointer<UInt8>, count: Int, operation: Operation, algorithm : DataCompress.Algorithm) {
         stream = UnsafeMutablePointer<compression_stream>.allocate(capacity: 1).pointee
         let status = initStream(operation: operation, algorithm: algorithm)
@@ -117,8 +141,12 @@ public class DataCompressStream {
         stream.dst_size = count
     }
     
-    //init?(dest:count:operation:algorithm)
-    // initialise class for streaming destination data
+    /// Initialise class for streaming destination data
+    /// - parameters:
+    ///     - src: pointer to source buffer
+    ///     - count: size of source buffer
+    ///     - operation: .compress or .decompress
+    ///     - algorithm: compression algorithm to use
     public init?(src: UnsafePointer<UInt8>, count: Int, operation: Operation, algorithm : DataCompress.Algorithm) {
         stream = UnsafeMutablePointer<compression_stream>.allocate(capacity: 1).pointee
         let status = initStream(operation: operation, algorithm: algorithm)
@@ -133,15 +161,17 @@ public class DataCompressStream {
         compression_stream_destroy(&stream)
     }
     
-    //initStream(operation:algorithm)
-    //init compression stream object
+    ///init compression stream object
     func initStream(operation: Operation, algorithm : DataCompress.Algorithm) -> Bool {
         let status = compression_stream_init(&stream, operation.compression_stream_operation, algorithm.compression_algorithm)
         return status == COMPRESSION_STATUS_OK
     }
     
-    //process(src:count)
-    //supply some more source data to process. Class needs to have been initialised to stream source data
+    ///supply some more source data to process. Class needs to have been initialised to stream source data
+    /// - parameters:
+    ///     - src: pointer to new source buffer
+    ///     - count: size of new source buffer
+    /// - returns: Returns status of streaming .ok, .end or .error
     public func process(src: UnsafePointer<UInt8>, count: Int) -> Status {
         guard dest != nil else { return .error }
 
@@ -157,8 +187,11 @@ public class DataCompressStream {
         }
     }
     
-    //process(src:count)
-    //supply a destination buffer for process to write to. Class needs to have been initialised to stream destination data
+    ///supply a destination buffer for process to write to. Class needs to have been initialised to stream destination data
+    /// - parameters:
+    ///     - dest: pointer to new destination buffer
+    ///     - count: size of new destination buffer
+    /// - returns: Returns status of streaming .ok, .end or .error
     public func process(dest: UnsafeMutablePointer<UInt8>, count: Int) -> Status {
         guard src != nil else { return .error }
         
@@ -172,10 +205,6 @@ public class DataCompressStream {
         case COMPRESSION_STATUS_ERROR: return .error
         default: return .error
         }
-    }
-    
-    func status() -> String {
-        return "src = \(stream.src_ptr) src size = \(stream.src_size) dest = \(stream.dst_ptr) dest size = \(stream.dst_size)"
     }
     
     public enum Status {
