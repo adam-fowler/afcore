@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D119884C1EB9CD55005FE07F /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D119884B1EB9CD55005FE07F /* DebugViewController.swift */; };
+		D119884C1EB9CD55005FE07F /* DebugVariableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D119884B1EB9CD55005FE07F /* DebugVariableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D11987FE1EB9C7FD005FE07F /* debug.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = debug.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D11988021EB9C7FD005FE07F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D119884B1EB9CD55005FE07F /* DebugViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
+		D119884B1EB9CD55005FE07F /* DebugVariableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugVariableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,7 +46,7 @@
 		D11988001EB9C7FD005FE07F /* debug */ = {
 			isa = PBXGroup;
 			children = (
-				D119884B1EB9CD55005FE07F /* DebugViewController.swift */,
+				D119884B1EB9CD55005FE07F /* DebugVariableView.swift */,
 				D11988021EB9C7FD005FE07F /* Info.plist */,
 			);
 			path = debug;
@@ -132,7 +132,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D119884C1EB9CD55005FE07F /* DebugViewController.swift in Sources */,
+				D119884C1EB9CD55005FE07F /* DebugVariableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

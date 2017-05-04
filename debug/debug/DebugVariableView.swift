@@ -1,5 +1,5 @@
 //
-//  DebugViewController.swift
+//  DebugVariableView.swift
 //  utils
 //
 //  Created by Adam Fowler on 02/05/2017.
@@ -8,12 +8,12 @@
 
 import UIKit
 
-protocol DebugWidgetDisplay {
+protocol DebugVariableDisplay {
     func getName() -> String
     func getValue() -> String
 }
 
-public class DebugWidget<T> : DebugWidgetDisplay {
+public class DebugVariable<T> : DebugVariableDisplay {
     public typealias Value = T
     public init(name: String, get : @escaping () -> Value) {
         self.name = name
@@ -26,7 +26,7 @@ public class DebugWidget<T> : DebugWidgetDisplay {
     let name : String
 }
 
-public class DebugView {
+public class DebugVariableView {
     public init(parent: UIView, frame: CGRect) {
         #if DEBUG
             view = UIView(frame: frame)
@@ -38,7 +38,7 @@ public class DebugView {
     
     public func viewWillAppear() {
         #if DEBUG
-            if DebugView.displayDebug == false {
+            if DebugVariableView.displayDebug == false {
                 return
             }
             createLabels()
@@ -117,13 +117,13 @@ public class DebugView {
         }
     }
     
-    public func addWidget<T>(_ widget: DebugWidget<T>) {
+    public func addWidget<T>(_ widget: DebugVariable<T>) {
         #if DEBUG
             widgets.append(widget)
         #endif
     }
     
-    var widgets : [DebugWidgetDisplay] = []
+    var widgets : [DebugVariableDisplay] = []
     var timer : Timer?
     var nameLabels : [UILabel] = []
     var valueLabels : [UILabel] = []
@@ -136,9 +136,9 @@ public class DebugView {
 private var key: Void?
 
 extension UIViewController {
-    public var debugView: DebugView? {
+    public var debugView: DebugVariableView? {
         get {
-            return objc_getAssociatedObject(self, &key) as? DebugView
+            return objc_getAssociatedObject(self, &key) as? DebugVariableView
         }
         
         set {
