@@ -10,6 +10,8 @@ import Foundation
 
 extension String {
     
+    /// Replace HTML encoding with ASCII equivalents
+    /// - returns: ASCII string
     public func htmlDecode() -> String
     {
         var replacement = self.replacingOccurrences(of: "&amp;", with: "&")
@@ -22,6 +24,8 @@ extension String {
         return replacement.replacingOccurrences(of: "&gt;", with: ">")
     }
     
+    /// Replace ASCII characters with HTML encoded equivalents
+    /// - returns: HTML encoded string
     public func htmlEncode() -> String {
         var replacement = self.replacingOccurrences(of: "&", with: "&amp;")
         replacement = replacement.replacingOccurrences(of: "\"", with: "&quot;")

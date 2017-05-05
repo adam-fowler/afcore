@@ -39,6 +39,8 @@ public enum Model : String {
 }
 
 public extension UIDevice {
+    
+    /// iPhone model type. Gets model name from systemInfo and converts to a more human readable version
     public var systemType: Model {
         var systemInfo = utsname()
         uname(&systemInfo)

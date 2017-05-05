@@ -9,6 +9,8 @@
 import Foundation
 
 extension Data {
+    /// Return data as a hex encoded string
+    /// - returns: hex encoded string
     public func hexEncodedString() -> String {
         return map { String(format: "%02hhx", $0) }.joined()
     }

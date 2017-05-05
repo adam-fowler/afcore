@@ -8,11 +8,11 @@
 
 import UIKit
 
-//
-// extend UIBarButtonSystemItem to give us the UIImage for certain system icons
-// Warning: Do not use this extension if you care about what is in the toolbar at that point
-//
 extension UIBarButtonSystemItem {
+    
+    /// Return UIImage used for bar button system icons.
+    /// Warning: do not use this extension if you care about what is in the toolbar at that point
+    /// - returns: icon image
     public var image: UIImage? {
         get {
             let tempItem = UIBarButtonItem(barButtonSystemItem: self, target: nil, action: nil)

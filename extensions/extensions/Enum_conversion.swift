@@ -10,6 +10,7 @@ import UIKit
 import AVFoundation
 
 extension UIDeviceOrientation {
+    /// Convert from UIDeviceOrientation to AVCaptureVideoOrientation
     public var videoOrientation: AVCaptureVideoOrientation? {
         switch self {
         case .portrait: return .portrait
@@ -19,6 +20,7 @@ extension UIDeviceOrientation {
         default: return nil
         }
     }
+    /// Convert from UIDeviceOrientation to UIImageOrientation
     public var imageOrientation: UIImageOrientation? {
         switch self {
         case .portrait: return .right
@@ -32,6 +34,7 @@ extension UIDeviceOrientation {
 
 
 extension UIInterfaceOrientation {
+    /// Convert from UIInterfaceOrientation to AVCaptureVideoOrientation
     public var videoOrientation: AVCaptureVideoOrientation? {
         switch self {
         case .portrait: return .portrait
@@ -44,6 +47,7 @@ extension UIInterfaceOrientation {
 }
 
 extension UIViewAnimationCurve {
+    /// Convert from UIViewAnimationCurve to UIViewAnimationOptions
     public var animationOption: UIViewAnimationOptions {
         switch self {
         case .easeInOut: return .curveEaseInOut
