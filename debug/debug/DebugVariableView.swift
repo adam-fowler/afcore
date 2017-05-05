@@ -8,13 +8,22 @@
 
 import UIKit
 
+/// Protocol for Debug Variables
 protocol DebugVariableDisplay {
+    /// return name of variable
     func getName() -> String
+    
+    /// return value of variable as a string
     func getValue() -> String
 }
 
+/// Generic class for Debug variable display. It uses a function closure to get the value to display.
 public class DebugVariable<T> : DebugVariableDisplay {
     public typealias Value = T
+    
+    /// initialise class
+    /// - parameter name: name of variable to display
+    /// - parameter get: function returning value of variable
     public init(name: String, get : @escaping () -> Value) {
         self.name = name
         self.getter = get
@@ -26,7 +35,12 @@ public class DebugVariable<T> : DebugVariableDisplay {
     let name : String
 }
 
+/// Class to create a UIView that contains a debug variable watch window.
 public class DebugVariableView {
+    
+    /// Initialise class.
+    /// - parameter parent: Parent UIView to add debug variable view to
+    /// - parameter frame: Rectangle defining position and size of debug view on screen
     public init(parent: UIView, frame: CGRect) {
         #if DEBUG
             view = UIView(frame: frame)
@@ -36,6 +50,9 @@ public class DebugVariableView {
         #endif
     }
     
+    /// Call this from your View Controller version of viewWillAppear. It creates all the labels required for displaying
+    /// the debug variables and makes the view visible. You should have added all your DebugVariables to the View before 
+    /// this point
     public func viewWillAppear() {
         #if DEBUG
             if DebugVariableView.displayDebug == false {
@@ -49,6 +66,8 @@ public class DebugVariableView {
         #endif
     }
     
+    /// Call this from your View Controller version of viewWillDisappear. Hides the view, deletes all the debug variable labels
+    /// and kills the update timer
     public func viewWillDisappear() {
         #if DEBUG
             view.isHidden = true
@@ -57,8 +76,16 @@ public class DebugVariableView {
         #endif
     }
     
+    /// Add a variable to the debug variable view
+    /// - parameter variable: Debug variable to add
+    public func addVariable<T>(_ variable: DebugVariable<T>) {
+        #if DEBUG
+            variables.append(variable)
+        #endif
+    }
+    
     func createLabels() {
-        guard widgets.count > 0 else {view.isHidden = true; return}
+        guard variables.count > 0 else {view.isHidden = true; return}
         
         let width = view.frame.size.width - 12
         let height = view.frame.size.height - 8
@@ -67,9 +94,9 @@ public class DebugVariableView {
         var maxWidth : CGFloat = 0
         
         // create name labels
-        for i in 0..<min(numLabels,widgets.count) {
+        for i in 0..<min(numLabels,variables.count) {
             let nameLabel = UILabel(frame: CGRect(x:4, y:4 + CGFloat(i)*labelHeight, width:width/2, height:labelHeight))
-            nameLabel.text = widgets[i].getName()
+            nameLabel.text = variables[i].getName()
             nameLabel.font = nameLabel.font.withSize(12)
             nameLabel.textColor = UIColor.white
             let size = nameLabel.sizeThatFits(nameLabel.frame.size)
@@ -81,7 +108,7 @@ public class DebugVariableView {
         }
         
         // create value labels
-        for i in 0..<min(numLabels,widgets.count) {
+        for i in 0..<min(numLabels,variables.count) {
             let valueLabel = UILabel(frame: CGRect(x:maxWidth+8, y:4 + CGFloat(i)*labelHeight, width:width-maxWidth, height:labelHeight))
             valueLabel.font = valueLabel.font.withSize(12)
             valueLabel.textColor = UIColor.white
@@ -112,18 +139,12 @@ public class DebugVariableView {
     }
     
     @objc func updateLabels() {
-        for i in 0..<min(nameLabels.count,widgets.count) {
-            valueLabels[i].text = widgets[i].getValue()
+        for i in 0..<min(nameLabels.count,variables.count) {
+            valueLabels[i].text = variables[i].getValue()
         }
     }
     
-    public func addWidget<T>(_ widget: DebugVariable<T>) {
-        #if DEBUG
-            widgets.append(widget)
-        #endif
-    }
-    
-    var widgets : [DebugVariableDisplay] = []
+    var variables : [DebugVariableDisplay] = []
     var timer : Timer?
     var nameLabels : [UILabel] = []
     var valueLabels : [UILabel] = []
