@@ -8,8 +8,8 @@
 
 import Foundation
 
-func nonfatal_assert(_ condition: @autoclosure () -> Bool, _ message: @autoclosure () -> String = "",
-              file: String = #file, line: Int = #line) {
+public func nonfatal_assert(_ condition: @autoclosure () -> Bool, _ message: @autoclosure () -> String = "",
+                     file: String = #file, line: Int = #line) {
     #if DEBUG
         if !condition() {
             let output : String = "Assert: \(file.components(separatedBy:"/").last ?? file):\(line): \(message())"
@@ -21,7 +21,22 @@ func nonfatal_assert(_ condition: @autoclosure () -> Bool, _ message: @autoclosu
     #endif
 }
 
-func fatal_assert(_ condition: @autoclosure () -> Bool, _ message: @autoclosure () -> String = "",
+public func verify(_ condition: @autoclosure () -> Bool, _ message: @autoclosure () -> String = "",
+            file: String = #file, line: Int = #line) -> Bool {
+    if !condition() {
+        #if DEBUG
+            let output : String = "Assert: \(file.components(separatedBy:"/").last ?? file):\(line): \(message())"
+            print(output)
+            if DebugHelper.isDebuggerAttached() {
+                DebugHelper.break()
+            }
+        #endif
+        return false
+    }
+    return true
+}
+
+public func fatal_assert(_ condition: @autoclosure () -> Bool, _ message: @autoclosure () -> String = "",
                      file: String = #file, line: Int = #line) {
     #if DEBUG
         if !condition() {
