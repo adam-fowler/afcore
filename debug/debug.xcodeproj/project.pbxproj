@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D119884C1EB9CD55005FE07F /* DebugVariableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D119884B1EB9CD55005FE07F /* DebugVariableView.swift */; };
 		D18BDD961ED4B42400A808C8 /* debughelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D18BDD951ED4B42400A808C8 /* debughelper.m */; };
+		D1E77C611ED4EDEA005A2CA7 /* assert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E77C601ED4EDEA005A2CA7 /* assert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,6 +19,7 @@
 		D18BDD951ED4B42400A808C8 /* debughelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = debughelper.m; sourceTree = "<group>"; };
 		D18BDD971ED4B50100A808C8 /* debughelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = debughelper.h; sourceTree = "<group>"; };
 		D18BDDA51ED4C37100A808C8 /* debug-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "debug-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		D1E77C601ED4EDEA005A2CA7 /* assert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = assert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 				D11988021EB9C7FD005FE07F /* Info.plist */,
 				D18BDD951ED4B42400A808C8 /* debughelper.m */,
 				D18BDD971ED4B50100A808C8 /* debughelper.h */,
+				D1E77C601ED4EDEA005A2CA7 /* assert.swift */,
 			);
 			path = debug;
 			sourceTree = "<group>";
@@ -139,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1E77C611ED4EDEA005A2CA7 /* assert.swift in Sources */,
 				D119884C1EB9CD55005FE07F /* DebugVariableView.swift in Sources */,
 				D18BDD961ED4B42400A808C8 /* debughelper.m in Sources */,
 			);
