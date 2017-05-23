@@ -55,6 +55,9 @@ public class DebugVariableView {
     /// this point
     public func viewWillAppear() {
         #if DEBUG
+            let a : Assert = Assert();
+            a.__debugbreak()
+            //Builtin.int_trap()
             if DebugVariableView.displayDebug == false {
                 return
             }
