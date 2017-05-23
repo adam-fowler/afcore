@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 
 func nonfatal_assert(_ condition: @autoclosure () -> Bool, _ message: @autoclosure () -> String = "",
               file: String = #file, line: Int = #line) {
