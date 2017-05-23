@@ -8,16 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		D119884C1EB9CD55005FE07F /* DebugVariableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D119884B1EB9CD55005FE07F /* DebugVariableView.swift */; };
-		D18BDD961ED4B42400A808C8 /* assert.m in Sources */ = {isa = PBXBuildFile; fileRef = D18BDD951ED4B42400A808C8 /* assert.m */; };
+		D18BDD961ED4B42400A808C8 /* debughelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D18BDD951ED4B42400A808C8 /* debughelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D11987FE1EB9C7FD005FE07F /* debug.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = debug.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D11988021EB9C7FD005FE07F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D119884B1EB9CD55005FE07F /* DebugVariableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugVariableView.swift; sourceTree = "<group>"; };
-		D18BDD951ED4B42400A808C8 /* assert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = assert.m; sourceTree = "<group>"; };
-		D18BDD971ED4B50100A808C8 /* assert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = assert.h; sourceTree = "<group>"; };
-		D18BDDA51ED4C37100A808C8 /* debug-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "debug-Bridging-Header.h"; sourceTree = "<group>"; };
+		D18BDD951ED4B42400A808C8 /* debughelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = debughelper.m; sourceTree = "<group>"; };
+		D18BDD971ED4B50100A808C8 /* debughelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = debughelper.h; sourceTree = "<group>"; };
+		D18BDDA51ED4C37100A808C8 /* debug-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "debug-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,8 +53,8 @@
 			children = (
 				D119884B1EB9CD55005FE07F /* DebugVariableView.swift */,
 				D11988021EB9C7FD005FE07F /* Info.plist */,
-				D18BDD951ED4B42400A808C8 /* assert.m */,
-				D18BDD971ED4B50100A808C8 /* assert.h */,
+				D18BDD951ED4B42400A808C8 /* debughelper.m */,
+				D18BDD971ED4B50100A808C8 /* debughelper.h */,
 			);
 			path = debug;
 			sourceTree = "<group>";
@@ -140,7 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D119884C1EB9CD55005FE07F /* DebugVariableView.swift in Sources */,
-				D18BDD961ED4B42400A808C8 /* assert.m in Sources */,
+				D18BDD961ED4B42400A808C8 /* debughelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,6 +11,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import "assert.h"
+#import "debug/debughelper.h"
 
 #endif /* debug_Bridging_Header_h */
