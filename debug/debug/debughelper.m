@@ -3,7 +3,7 @@
 //  debug
 //
 //  Created by Adam Fowler on 23/05/2017.
-//  Copyright © 2017 Adam Fowler. All rights reserved.
+//  __debugbreak() is from https://stackoverflow.com/questions/44140778/resumable-assert-breakpoint-on-ios
 //
 
 #import <Foundation/Foundation.h>
@@ -11,15 +11,34 @@
 #import "debughelper.h"
 
 #include <sys/sysctl.h>
+#include <unistd.h>
+
+#if defined(__APPLE__) && defined(__aarch64__)
+#define __debugbreak() __asm__ __volatile__(            \
+"   mov    x0, %x0;    \n" /* pid                */ \
+"   mov    x1, #0x11;  \n" /* SIGSTOP            */ \
+"   mov    x16, #0x25; \n" /* syscall 37 = kill  */ \
+"   svc    #0x80       \n" /* software interrupt */ \
+"   mov    x0, x0      \n" /* nop                */ \
+::  "r"(getpid())                                   \
+:   "x0", "x1", "x16", "memory")
+#elif defined(__APPLE__) && defined(__arm__)
+#define __debugbreak() __asm__ __volatile__(            \
+"   mov    r0, %0;     \n" /* pid                */ \
+"   mov    r1, #0x11;  \n" /* SIGSTOP            */ \
+"   mov    r12, #0x25; \n" /* syscall 37 = kill  */ \
+"   svc    #0x80       \n" /* software interrupt */ \
+"   mov    r0, r0      \n" /* nop                */ \
+::  "r"(getpid())                                   \
+:   "r0", "r1", "r12", "memory")
+#elif defined(__APPLE__) && (defined(__i386__) || defined(__x86_64__))
+#define __debugbreak() __asm__ __volatile__("int $3; mov %eax, %eax")
+#else
+#error "Unsupported platform while defining __debugbreak()"
+#endif
 
 
 @implementation DebugHelper : NSObject
-
-#if TARGET_IPHONE_SIMULATOR
-#define __debugbreak() __asm__ ("int $3")
-#else
-#define __debugbreak() __asm__ __volatile__("svc #0x80; mov r0, r0")
-#endif
 
 + (void) break {
     __debugbreak();
