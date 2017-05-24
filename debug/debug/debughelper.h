@@ -14,6 +14,7 @@
 + (void) break;
 + (void) trap;
 + (bool) isDebuggerAttached;
+
 @end
 
 #endif /* debughelper_h */

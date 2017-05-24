@@ -25,7 +25,7 @@ public func verify(_ condition: @autoclosure () -> Bool, _ message: @autoclosure
             file: String = #file, line: Int = #line) -> Bool {
     if !condition() {
         #if DEBUG
-            let output : String = "Assert: \(file.components(separatedBy:"/").last ?? file):\(line): \(message())"
+            let output : String = "Verify: \(file.components(separatedBy:"/").last ?? file):\(line): \(message())"
             print(output)
             if DebugHelper.isDebuggerAttached() {
                 DebugHelper.break()

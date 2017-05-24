@@ -58,4 +58,5 @@
     
     return ( (info.kp_proc.p_flag & P_TRACED) != 0 );    
 }
+
 @end
