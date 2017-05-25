@@ -51,7 +51,13 @@ public func fatal_assert(_ condition: @autoclosure () -> Bool, _ message: @autoc
         if !condition() {
             let filename = file.components(separatedBy:"/").last ?? file
             print("Assert: \(filename):\(line): \(message())")
-            ErrorRecorder.instance?.postMessage("Assert: \(message())", file: filename, line: line);
+            if !DebugHelper.isDebuggerAttached() {
+                var finished = false
+                ErrorRecorder.instance?.postMessage("Assert: \(message())", file: filename, line: line) { finished = true };
+                while !finished {
+                    sleep(1)
+                }
+            }
             DebugHelper.trap()
         }
     #endif
@@ -71,7 +77,7 @@ public class ErrorRecorder {
 
     public static var instance : ErrorRecorder?
     
-    public func postMessage(_ message: String, file: String = #file, line: Int = #line) {
+    public func postMessage(_ message: String, file: String = #file, line: Int = #line, completion: @escaping ()->() = {}) {
         guard enabled == true else {return}
         
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
@@ -80,16 +86,27 @@ public class ErrorRecorder {
         let iosVersion = UIDevice.current.systemVersion
         let type = UIDevice.current.systemType.rawValue
         let postDictionary : [String:Any] = ["version":version, "ios":"\(ios) \(iosVersion)", "model":type, "uuid": identifier.description, "assert":message, "file":file, "line":line]
-        print(postDictionary)
         let postData = try! JSONSerialization.data(withJSONObject: postDictionary, options: [])
         
         Http.post(url:url, username:username, password:password, data: postData) { data, response, error in
             if let error = error {
                 print(error)
-            } else {
-                let s = String(data:data!, encoding:.utf8)
-                print(s!)
+            } else if let data = data {
+                do {
+                    let object = try JSONSerialization.jsonObject(with: data, options: [])
+                    if let dictionary = object as? NSDictionary {
+                        if let error = dictionary["error"]  as? NSDictionary {
+                            if let code = error["code"] as? Int {
+                                if code != 200 {
+                                    print(dictionary);
+                                    self.enabled = false
+                                }
+                            }
+                        }
+                    }
+                } catch {}
             }
+            completion();
         }
     }
     
