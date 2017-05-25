@@ -21,7 +21,7 @@ public func nonfatal_assert(_ condition: @autoclosure () -> Bool, _ message: @au
             if DebugHelper.isDebuggerAttached() {
                 DebugHelper.break()
             } else {
-                ErrorRecorder.instance?.postMessage(message: "Assert: \(message())", file: filename, line: line);
+                ErrorRecorder.instance?.postMessage("Assert: \(message())", file: filename, line: line);
             }
         }
     #endif
@@ -37,7 +37,7 @@ public func verify(_ condition: @autoclosure () -> Bool, _ message: @autoclosure
             if DebugHelper.isDebuggerAttached() {
                 DebugHelper.break()
             } else {
-                ErrorRecorder.instance?.postMessage(message: "Verify: \(message())", file: filename, line: line);
+                ErrorRecorder.instance?.postMessage("Verify: \(message())", file: filename, line: line);
             }
         #endif
         return false
@@ -51,7 +51,7 @@ public func fatal_assert(_ condition: @autoclosure () -> Bool, _ message: @autoc
         if !condition() {
             let filename = file.components(separatedBy:"/").last ?? file
             print("Assert: \(filename):\(line): \(message())")
-            ErrorRecorder.instance?.postMessage(message:"Assert: \(message())", file: filename, line: line);
+            ErrorRecorder.instance?.postMessage("Assert: \(message())", file: filename, line: line);
             DebugHelper.trap()
         }
     #endif
@@ -71,7 +71,7 @@ public class ErrorRecorder {
 
     public static var instance : ErrorRecorder?
     
-    public func postMessage(message: String, file: String = #file, line: Int = #line) {
+    public func postMessage(_ message: String, file: String = #file, line: Int = #line) {
         guard enabled == true else {return}
         
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
