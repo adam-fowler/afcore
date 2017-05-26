@@ -6,8 +6,15 @@
 //  Copyright © 2017 Adam Fowler. All rights reserved.
 //
 
-#ifndef afcore_h
-#define afcore_h
+#import <UIKit/UIKit.h>
 
+//! Project version number for afcore.
+FOUNDATION_EXPORT double afcoreVersionNumber;
 
-#endif /* afcore_h */
+//! Project version string for afcore.
+FOUNDATION_EXPORT const unsigned char afcoreVersionString[];
+
+// In this header, you should import all the public headers of your framework using statements like #import <afcore/PublicHeader.h>
+
+#import "debughelper.h"
+

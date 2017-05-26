@@ -49,8 +49,8 @@ class mathsTests: XCTestCase {
     func testPolynomialNewtonRaphson() {
         let threshold = 0.001
         for i in 1...5 {
-            var coeffs = Vector([-2,1,5,0.5,4])
-            var x = Double(i)
+            let coeffs = Vector([-2,1,5,0.5,4])
+            let x = Double(i)
             let y = PolynomialFunction.compute(coeffs: coeffs, x: x)
             coeffs[0] -= y
             let x2 = PolynomialFunction.solveNewtonRaphson(coeffs: Vector([-2-y,1,5,0.5,4]), initialValue:0, threshold:threshold)

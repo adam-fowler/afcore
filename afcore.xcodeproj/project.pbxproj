@@ -31,7 +31,6 @@
 		D1877AA61ED82E4900E8700B /* compress.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1877AA31ED82E4900E8700B /* compress.swift */; };
 		D1877AA71ED82E4900E8700B /* http.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1877AA41ED82E4900E8700B /* http.swift */; };
 		D1877AA91ED82E6800E8700B /* dataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1877AA81ED82E6800E8700B /* dataTests.swift */; };
-		D1877ABA1ED82EAF00E8700B /* CommonCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1877AB51ED82E8C00E8700B /* CommonCrypto.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,41 +40,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = D1877A591ED8281F00E8700B;
 			remoteInfo = afcore;
-		};
-		D1877AB21ED82E8C00E8700B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D1877AAB1ED82E8C00E8700B /* CommonCrypto.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 444A78DC1D8819F8003983A2;
-			remoteInfo = "CommonCrypto-watchOS";
-		};
-		D1877AB41ED82E8C00E8700B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D1877AAB1ED82E8C00E8700B /* CommonCrypto.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 444A78E91D881A1E003983A2;
-			remoteInfo = "CommonCrypto-iOS";
-		};
-		D1877AB61ED82E8C00E8700B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D1877AAB1ED82E8C00E8700B /* CommonCrypto.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 444A78F61D881A2D003983A2;
-			remoteInfo = "CommonCrypto-tvOS";
-		};
-		D1877AB81ED82E8C00E8700B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D1877AAB1ED82E8C00E8700B /* CommonCrypto.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 444A79031D881A39003983A2;
-			remoteInfo = "CommonCrypto-macOS";
-		};
-		D1877ABB1ED82EC600E8700B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D1877AAB1ED82E8C00E8700B /* CommonCrypto.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 444A78E81D881A1E003983A2;
-			remoteInfo = "CommonCrypto-iOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -107,7 +71,6 @@
 		D1877AA31ED82E4900E8700B /* compress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = compress.swift; path = data/compress.swift; sourceTree = "<group>"; };
 		D1877AA41ED82E4900E8700B /* http.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = http.swift; path = data/http.swift; sourceTree = "<group>"; };
 		D1877AA81ED82E6800E8700B /* dataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dataTests.swift; sourceTree = "<group>"; };
-		D1877AAB1ED82E8C00E8700B /* CommonCrypto.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CommonCrypto.xcodeproj; path = CommonCrypto/CommonCrypto.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +78,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1877ABA1ED82EAF00E8700B /* CommonCrypto.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,7 +95,6 @@
 		D1877A501ED8281F00E8700B = {
 			isa = PBXGroup;
 			children = (
-				D1877AAA1ED82E7E00E8700B /* CommonCrypto */,
 				D1877A991ED82E1D00E8700B /* data */,
 				D1877A981ED82E1700E8700B /* debug */,
 				D1877A8B1ED82DFE00E8700B /* extensions */,
@@ -228,25 +189,6 @@
 			name = data;
 			sourceTree = "<group>";
 		};
-		D1877AAA1ED82E7E00E8700B /* CommonCrypto */ = {
-			isa = PBXGroup;
-			children = (
-				D1877AAB1ED82E8C00E8700B /* CommonCrypto.xcodeproj */,
-			);
-			name = CommonCrypto;
-			sourceTree = "<group>";
-		};
-		D1877AAC1ED82E8C00E8700B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				D1877AB31ED82E8C00E8700B /* CommonCrypto.framework */,
-				D1877AB51ED82E8C00E8700B /* CommonCrypto.framework */,
-				D1877AB71ED82E8C00E8700B /* CommonCrypto.framework */,
-				D1877AB91ED82E8C00E8700B /* CommonCrypto.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -274,7 +216,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				D1877ABC1ED82EC600E8700B /* PBXTargetDependency */,
 			);
 			name = afcore;
 			productName = afcore;
@@ -332,12 +273,6 @@
 			mainGroup = D1877A501ED8281F00E8700B;
 			productRefGroup = D1877A5B1ED8281F00E8700B /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = D1877AAC1ED82E8C00E8700B /* Products */;
-					ProjectRef = D1877AAB1ED82E8C00E8700B /* CommonCrypto.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				D1877A591ED8281F00E8700B /* afcore */,
@@ -345,37 +280,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		D1877AB31ED82E8C00E8700B /* CommonCrypto.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = CommonCrypto.framework;
-			remoteRef = D1877AB21ED82E8C00E8700B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D1877AB51ED82E8C00E8700B /* CommonCrypto.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = CommonCrypto.framework;
-			remoteRef = D1877AB41ED82E8C00E8700B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D1877AB71ED82E8C00E8700B /* CommonCrypto.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = CommonCrypto.framework;
-			remoteRef = D1877AB61ED82E8C00E8700B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D1877AB91ED82E8C00E8700B /* CommonCrypto.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = CommonCrypto.framework;
-			remoteRef = D1877AB81ED82E8C00E8700B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D1877A581ED8281F00E8700B /* Resources */ = {
@@ -437,11 +341,6 @@
 			isa = PBXTargetDependency;
 			target = D1877A591ED8281F00E8700B /* afcore */;
 			targetProxy = D1877A7F1ED829B500E8700B /* PBXContainerItemProxy */;
-		};
-		D1877ABC1ED82EC600E8700B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "CommonCrypto-iOS";
-			targetProxy = D1877ABB1ED82EC600E8700B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -640,6 +539,7 @@
 				D1877A831ED829B500E8700B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -9,5 +9,6 @@
 #ifndef afcore_Bridging_Header_h
 #define afcore_Bridging_Header_h
 
+#import "../debug/debughelper.h"
 
 #endif /* afcore_Bridging_Header_h */

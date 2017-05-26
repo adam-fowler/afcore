@@ -7,6 +7,10 @@
 //
 
 import Foundation
+
+#if REQUIRE_AES
+// AES code requires CommonCrypto library. You can find module project here  https://github.com/sergejp/CommonCrypto. I haven't included it in the 
+// project for the simple reason I don't want to drag encryption code into projects that don't need it.
 import CommonCrypto
 
 /// class wrapping the CommonCrypto implementations of AES
@@ -115,3 +119,4 @@ public class AES {
     
 }
 
+#endif // REQUIRE_AES
