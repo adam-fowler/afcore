@@ -11,6 +11,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import "debug/debughelper.h"
+#import "debughelper.h"
 
 #endif /* debug_Bridging_Header_h */
