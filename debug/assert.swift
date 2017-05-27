@@ -89,20 +89,13 @@ public class ErrorRecorder {
         Http.post(url:url, username:username, password:password, data: postData) { data, response, error in
             if let error = error {
                 print(error)
-            } else if let data = data {
-                do {
-                    let object = try JSONSerialization.jsonObject(with: data, options: [])
-                    if let dictionary = object as? NSDictionary {
-                        if let error = dictionary["error"]  as? NSDictionary {
-                            if let code = error["code"] as? Int {
-                                if code != 200 {
-                                    print(dictionary);
-                                    self.enabled = false
-                                }
-                            }
-                        }
+            } else {
+                if let response = response as? HTTPURLResponse {
+                    if response.statusCode != 200 {
+                        print("Http response is \(response.statusCode) : \(String(describing: response))")
+                        self.enabled = false
                     }
-                } catch {}
+                }
             }
             completion();
         }
