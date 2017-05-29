@@ -86,7 +86,7 @@ public class ErrorRecorder {
         let postDictionary : [String:Any] = ["version":version, "ios":"\(ios) \(iosVersion)", "model":type, "uuid": identifier.description, "assert":message, "file":file, "line":line]
         let postData = try! JSONSerialization.data(withJSONObject: postDictionary, options: [])
         
-        Http.post(url:url, username:username, password:password, data: postData) { data, response, error in
+        _ = Http.post(url:url, username:username, password:password, data: postData) { data, response, error in
             if let error = error {
                 print(error)
             } else {
