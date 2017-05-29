@@ -40,14 +40,17 @@
 
 @implementation DebugHelper : NSObject
 
+/// break into debugger
 + (void) break {
     __debugbreak();
 }
 
+/// throw trap exception
 + (void) trap {
     __builtin_trap();
 }
 
+/// Return if a debugger is attached to the process
 + (bool) isDebuggerAttached {
     int                 junk;
     int                 mib[4];

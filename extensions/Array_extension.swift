@@ -9,6 +9,10 @@
 import Foundation
 
 extension Array {
+    
+    /// Move array entry from one point to another
+    /// - parameter at: index of array entry to move
+    /// - parameter to: index in array to move to
     public mutating func move(at: Int, to: Int) {
         
         if at < to {

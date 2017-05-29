@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+/// A non fatal assert that allows you to continue in the debugger
 public func nonfatal_assert(_ condition: @autoclosure () -> Bool, _ message: @autoclosure () -> String = "",
                      file: String = #file, line: Int = #line) {
     #if DEBUG
@@ -25,6 +26,7 @@ public func nonfatal_assert(_ condition: @autoclosure () -> Bool, _ message: @au
     #endif
 }
 
+/// Verify a condition. In debug builds if the condition fails a non fatal assert is thrown
 public func verify(_ condition: @autoclosure () -> Bool, _ message: @autoclosure () -> String = "",
             file: String = #file, line: Int = #line) -> Bool {
     if !condition() {
@@ -43,6 +45,7 @@ public func verify(_ condition: @autoclosure () -> Bool, _ message: @autoclosure
     return true
 }
 
+/// A fatal assert that stops execution
 public func fatal_assert(_ condition: @autoclosure () -> Bool, _ message: @autoclosure () -> String = "",
                      file: String = #file, line: Int = #line) {
     #if DEBUG
@@ -61,11 +64,13 @@ public func fatal_assert(_ condition: @autoclosure () -> Bool, _ message: @autoc
     #endif
 }
 
-//
-//
-//  Class that post messages plus information about where the messages are coming from, to a web page. Used by assert code above
-//
+/// Class that post messages plus information about where the messages are coming from, to a server.
+/// Used by assert code above
 public class ErrorRecorder {
+    /// - parameters:
+    ///     - url: url of web page to post messages to
+    ///     - username: user login for the web page
+    ///     - password: password for login to the web page
     public init(url : String, username : String, password : String){
         self.url = url
         self.username = username
@@ -73,8 +78,15 @@ public class ErrorRecorder {
         self.enabled = true
     }
 
+    /// Singleton
     public static var instance : ErrorRecorder?
     
+    /// Send message to server along with extra information detailing where the message came from
+    /// - parameters:
+    ///     - message: Contents of message
+    ///     - file: filename from where postMessage was called
+    ///     - line: line number of code calling postMessage
+    ///     - completion: closure called once message has been sent
     public func postMessage(_ message: String, file: String = #file, line: Int = #line, completion: @escaping ()->() = {}) {
         guard enabled == true else {return}
         
