@@ -9,6 +9,13 @@
 import Foundation
 
 public class Http {
+
+    /// Send post request to authenticated URL
+    /// - parameter url: URL name
+    /// - parameter username: username to include in authentication
+    /// - parameter password: password to include in authentication
+    /// - parameter data: Data to send
+    /// - parameter completion: Closure called on completion of the url request
     public class func post(url: String, username: String, password: String, data: Data, completion:(@escaping (Data?, URLResponse?, Error?) -> Void)) -> URLSessionTask {
         // authorisation
         let loginString = String(format: "%@:%@", username, password)
@@ -24,6 +31,10 @@ public class Http {
         return task
     }
 
+    /// Send post request to URL
+    /// - parameter url: URL name
+    /// - parameter data: Data to send
+    /// - parameter completion: Closure called on completion of the url request
     public class func post(url: String, data: Data, completion:(@escaping (Data?, URLResponse?, Error?) -> Void)) -> URLSessionTask {
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"

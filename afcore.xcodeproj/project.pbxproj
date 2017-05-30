@@ -31,6 +31,8 @@
 		D1877AA61ED82E4900E8700B /* compress.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1877AA31ED82E4900E8700B /* compress.swift */; };
 		D1877AA71ED82E4900E8700B /* http.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1877AA41ED82E4900E8700B /* http.swift */; };
 		D1877AA91ED82E6800E8700B /* dataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1877AA81ED82E6800E8700B /* dataTests.swift */; };
+		D19497CF1EDCCAA0003252D3 /* Collection_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19497CE1EDCCAA0003252D3 /* Collection_extension.swift */; };
+		D19497D11EDCCBA5003252D3 /* Array_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19497D01EDCCBA5003252D3 /* Array_extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		D1877AA31ED82E4900E8700B /* compress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = compress.swift; path = data/compress.swift; sourceTree = "<group>"; };
 		D1877AA41ED82E4900E8700B /* http.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = http.swift; path = data/http.swift; sourceTree = "<group>"; };
 		D1877AA81ED82E6800E8700B /* dataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dataTests.swift; sourceTree = "<group>"; };
+		D19497CE1EDCCAA0003252D3 /* Collection_extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Collection_extension.swift; path = extensions/Collection_extension.swift; sourceTree = "<group>"; };
+		D19497D01EDCCBA5003252D3 /* Array_extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Array_extension.swift; path = extensions/Array_extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,7 +162,9 @@
 		D1877A8B1ED82DFE00E8700B /* extensions */ = {
 			isa = PBXGroup;
 			children = (
+				D19497D01EDCCBA5003252D3 /* Array_extension.swift */,
 				D1877A8C1ED82E0C00E8700B /* CGPoint_extension.swift */,
+				D19497CE1EDCCAA0003252D3 /* Collection_extension.swift */,
 				D1877A8D1ED82E0C00E8700B /* Data_extension.swift */,
 				D1877A8E1ED82E0C00E8700B /* Enum_conversion.swift */,
 				D1877A8F1ED82E0C00E8700B /* String_extension.swift */,
@@ -308,6 +314,7 @@
 				D1877AA51ED82E4900E8700B /* aes.swift in Sources */,
 				D1877A941ED82E0C00E8700B /* Enum_conversion.swift in Sources */,
 				D1877A931ED82E0C00E8700B /* Data_extension.swift in Sources */,
+				D19497CF1EDCCAA0003252D3 /* Collection_extension.swift in Sources */,
 				D1877AA71ED82E4900E8700B /* http.swift in Sources */,
 				D1877A6C1ED828D500E8700B /* Matrix.swift in Sources */,
 				D1877A961ED82E0C00E8700B /* UIBarButtonSystemItem_extension.swift in Sources */,
@@ -315,6 +322,7 @@
 				D1877A891ED82D9400E8700B /* Queue.swift in Sources */,
 				D1877A921ED82E0C00E8700B /* CGPoint_extension.swift in Sources */,
 				D1877A8A1ED82D9400E8700B /* Stack.swift in Sources */,
+				D19497D11EDCCBA5003252D3 /* Array_extension.swift in Sources */,
 				D1877A6D1ED828D500E8700B /* PolynomialFunction.swift in Sources */,
 				D1877AA11ED82E3000E8700B /* DebugVariableView.swift in Sources */,
 				D1877A6E1ED828D500E8700B /* Vector.swift in Sources */,
