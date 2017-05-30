@@ -16,7 +16,7 @@ public class Http {
     /// - parameter password: password to include in authentication
     /// - parameter data: Data to send
     /// - parameter completion: Closure called on completion of the url request
-    public class func post(url: String, username: String, password: String, data: Data, completion:(@escaping (Data?, URLResponse?, Error?) -> Void)) -> URLSessionTask {
+    public class func post(url: String, username: String, password: String, data: Data?, completion:(@escaping (Data?, URLResponse?, Error?) -> Void)) -> URLSessionTask {
         // authorisation
         let loginString = String(format: "%@:%@", username, password)
         let loginData = loginString.data(using: String.Encoding.utf8)!
@@ -35,7 +35,7 @@ public class Http {
     /// - parameter url: URL name
     /// - parameter data: Data to send
     /// - parameter completion: Closure called on completion of the url request
-    public class func post(url: String, data: Data, completion:(@escaping (Data?, URLResponse?, Error?) -> Void)) -> URLSessionTask {
+    public class func post(url: String, data: Data?, completion:(@escaping (Data?, URLResponse?, Error?) -> Void)) -> URLSessionTask {
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
         
