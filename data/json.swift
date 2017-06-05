@@ -5,6 +5,12 @@
 //  Created by Adam Fowler on 30/05/2017.
 //  Copyright © 2017 Adam Fowler. All rights reserved.
 //
+//  Initialise JsonParser with json data - let json = JsonParser(data:data)
+//  access dictionary elements as follows - json["element"]
+//  access array elements as follows - json[2]
+//  chain together access - json[1]["element"]["name"]
+//  access element as type - json[1].integer;json[3].string etc
+//
 
 import Foundation
 
@@ -67,8 +73,13 @@ public class JsonEntry {
     let entry : Any?
 }
 
-/// Class for parsing Json data. Can either be initialised with raw data, or a ready made dictionary
-/// api takes inspiration from SwiftyJson but code is a lot smaller and simpler
+/// Class for parsing Json data. Can either be initialised with raw data, or a ready made dictionary.
+/// api takes inspiration from SwiftyJson but code is a lot smaller and simpler.
+///  Initialise JsonParser with json data - let json = JsonParser(data:data).
+///  Access dictionary elements as follows - json["element"].
+///  Access array elements as follows - json[2].
+///  Chain together access - json[1]["element"]["name"].
+///  Access element as type - json[1].integer;json[3].string etc.
 public class JsonParser : JsonEntry {
     
     /// Create a foundation object from json data and use that to initialise the parser
