@@ -21,6 +21,16 @@ public class JsonEntry {
         self.entry = entry
     }
     
+    /// return if element exists
+    public var exists : Bool {
+        get {return entry != nil}
+    }
+    
+    /// return if element exists
+    public var any : Any? {
+        get {return entry}
+    }
+    
     /// return element as an integer
     public var integer : Int? {
         get { return entry as? Int }
@@ -46,6 +56,11 @@ public class JsonEntry {
         get { return entry as? String }
     }
     
+    /// return element as data
+    public var data : Data? {
+        get { return string?.data(using:.utf8) }
+    }
+    
     /// return element as a dictionary
     public var dictionary : [String:Any]? {
         get { return entry as? [String:Any] }
@@ -56,6 +71,11 @@ public class JsonEntry {
         get { return entry as? [Any] }
     }
     
+    /// return number of entries in array if element is an array
+    public var arrayCount : Int {
+        get { return (entry as? [Any])?.count ?? 0 }
+    }
+ 
     /// subscript element as if it is an array
     public subscript(index:Int) -> JsonEntry {
         get {
