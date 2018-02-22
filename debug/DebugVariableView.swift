@@ -73,8 +73,6 @@ public class DebugVariableView {
             view.isHidden = true
             timer?.invalidate()
             removeLabels()
-            // remove all the variables as they may contain closures that reference the owning class
-            variables.removeAll()
         #endif
     }
     
