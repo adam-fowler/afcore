@@ -8,6 +8,16 @@
 
 import CoreGraphics
 
+extension CGSize {
+    public static func * (left: CGSize, right: CGFloat) -> CGSize {
+        return CGSize(width:left.width * right, height:left.height * right)
+    }
+    
+    public static func / (left: CGSize, right: CGFloat) -> CGSize {
+        return CGSize(width:left.width / right, height:left.height / right)
+    }
+}
+
 extension CGPoint {
     public init(size: CGSize) {
         x = size.width
@@ -18,8 +28,16 @@ extension CGPoint {
         return CGPoint(x:left.x + right.x, y:left.y + right.y)
     }
     
+    public static func + (left: CGPoint, right: CGSize) -> CGPoint {
+        return CGPoint(x:left.x + right.width, y:left.y + right.height)
+    }
+    
     public static func - (left: CGPoint, right: CGPoint) -> CGPoint {
         return CGPoint(x:left.x - right.x, y:left.y - right.y)
+    }
+    
+    public static func - (left: CGPoint, right: CGSize) -> CGPoint {
+        return CGPoint(x:left.x - right.width, y:left.y - right.height)
     }
     
     public static func * (left: CGFloat, right: CGPoint) -> CGPoint {
