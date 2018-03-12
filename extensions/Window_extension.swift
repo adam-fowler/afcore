@@ -3,7 +3,7 @@
 //  afcore
 //
 //  Created by Adam Fowler on 12/03/2018.
-//  Copyright © 2018 Adam Fowler. All rights reserved.
+//  Code from https://stackoverflow.com/a/42486823/7831758 by https://stackoverflow.com/users/3451975/dschee
 //
 
 import UIKit
