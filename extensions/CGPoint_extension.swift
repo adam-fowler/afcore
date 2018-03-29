@@ -93,3 +93,15 @@ extension CGPoint {
         return self.applying(inverse)
     }
 }
+
+extension CGAffineTransform {
+    public var xScale: CGFloat {
+        get {return sqrt(self.a * self.a + self.c * self.c) }
+    }
+    public var yScale: CGFloat {
+        get {return sqrt(self.b * self.b + self.d * self.d) }
+    }
+    public var rotation: CGFloat {
+        get {return CGFloat(atan2f(Float(self.b), Float(self.a))) }
+    }
+}
