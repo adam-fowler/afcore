@@ -32,7 +32,8 @@ public class DataCompress {
     ///     - algorithm: compression algorithm used
     /// - returns: compressed data buffer or nil if there was an error
     public static func compress(src: Data, dest: inout Data, scratchBuffer: inout Data, algorithm: Algorithm) -> Data? {
-        let dest_size = dest.withUnsafeMutableBytes { destBytes in
+        var dest2 = dest
+        let dest_size = dest2.withUnsafeMutableBytes { destBytes in
             scratchBuffer.withUnsafeMutableBytes { scratchBufferBytes in
                 src.withUnsafeBytes { srcBytes in
                     compression_encode_buffer(destBytes, dest.count, srcBytes, src.count, scratchBufferBytes, algorithm.compression_algorithm)
@@ -70,7 +71,8 @@ public class DataCompress {
     ///     - algorithm: compression algorithm used
     /// - returns: decompressed data buffer or nil if there was an error
     public static func decompress(src: Data, dest: inout Data, scratchBuffer: inout Data, algorithm: Algorithm) -> Data? {
-        let dest_size = dest.withUnsafeMutableBytes { destBytes in
+        var dest2 = dest
+        let dest_size = dest2.withUnsafeMutableBytes { destBytes in
             scratchBuffer.withUnsafeMutableBytes { scratchBufferBytes in
                 src.withUnsafeBytes { srcBytes in
                     compression_decode_buffer(destBytes, dest.count, srcBytes, src.count, scratchBufferBytes, algorithm.compression_algorithm)
