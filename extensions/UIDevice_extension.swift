@@ -35,6 +35,9 @@ public enum Model : String {
     iPhoneSE       = "iPhone SE",
     iPhone7        = "iPhone 7",
     iPhone7plus    = "iPhone 7 Plus",
+    iPhone8        = "iPhone 8",
+    iPhone8plus    = "iPhone 8 Plus",
+    iPhoneX        = "iPhone X",
     unrecognized   = "?unrecognized?"
 }
 
@@ -97,6 +100,10 @@ public extension UIDevice {
             "iPhone9,2" : .iPhone7plus,
             "iPhone9,3" : .iPhone7,
             "iPhone9,4" : .iPhone7plus,
+            "iPhone10,1" : .iPhone8,
+            "iPhone10,2" : .iPhone8plus,
+            "iPhone10,3" : .iPhoneX,
+            "iPhone10,6" : .iPhoneX
             ]
         
         if let model = modelMap[modelCode ?? ""] {
