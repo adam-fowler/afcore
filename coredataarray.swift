@@ -80,6 +80,14 @@ public class CoreDataArray<Type> where Type:NSManagedObject {
         _ = CoreData.save()
     }
     
+    public func index(of element:Element) -> Int? {
+        return array.index(of:element)
+    }
+    
+    public func index(where predicate: (Element)->Bool) -> Int? {
+        return array.index(where: predicate)
+    }
+    
     public var isEmpty : Bool {return array.isEmpty}
     public var count : Int {return array.count}
     
