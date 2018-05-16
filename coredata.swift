@@ -18,7 +18,7 @@ public class CoreData {
         batchSave = true
     }
     
-    public class func save() -> Bool {
+    @discardableResult public class func save() -> Bool {
         if batchSave { return true }
         
         guard let managedContext = getManagedContext() else { return false}
@@ -31,7 +31,7 @@ public class CoreData {
         }
     }
     
-    public class func endSave() -> Bool {
+    @discardableResult public class func endSave() -> Bool {
         batchSave = false
         return save()
     }
