@@ -8,20 +8,46 @@
 
 import CoreData
 
-public class CoreDataArray<Type> where Type:NSManagedObject {
+/// ManagedObject class that only deletes the object it owns if it hasn't been referenced
+public class ManagedObject<Type> where Type:NSManagedObject {
+    public init(_ object : Type) {
+        self._object = object
+    }
+    
+    deinit {
+        if referenced == false {
+            if let managedContext = CoreData.getManagedContext() {
+                managedContext.delete(_object)
+                _ = CoreData.save()
+            }
+        }
+    }
+    public var object : Type { get { referenced = true; return _object} }
+    private let _object : Type
+    private var referenced = false
+}
+
+/// CoreData array
+public class CoreDataArray<Type> : CustomDebugStringConvertible where Type:NSManagedObject {
     public typealias Element = Type
     
     public init() {}
 
+    public var debugDescription: String { return array.debugDescription }
+    
     public subscript(position: Int) -> Element {
         return array[position]
     }
     
-    public func load() {
+    public var first: Element? { get {return array.first}}
+    public var last: Element? { get {return array.last}}
+
+    public func load(sortDescriptors:[NSSortDescriptor] = []) {
         guard let managedContext = CoreData.getManagedContext() else { return }
         
         // Load array
         let fetchRequest : NSFetchRequest<Type> = Type.fetchRequest() as! NSFetchRequest<Type>
+        fetchRequest.sortDescriptors = sortDescriptors
         
         do {
             array = try managedContext.fetch(fetchRequest)
@@ -64,17 +90,16 @@ public class CoreDataArray<Type> where Type:NSManagedObject {
         }
     }
     
-    public func remove(at: Int) {
-        guard let managedContext = CoreData.getManagedContext() else { return }
-        managedContext.delete(array[at])
-        array.remove(at:at)
-        _ = CoreData.save()
+    @discardableResult public func remove(at: Int) -> ManagedObject<Element> {
+        let tmp = array.remove(at:at)
+        return ManagedObject<Element>(tmp)
     }
     
     public func removeAll() {
-        guard let managedContext = CoreData.getManagedContext() else { return }
-        for entry in array {
-            managedContext.delete(entry)
+        if let managedContext = CoreData.getManagedContext() {
+            for entry in array {
+                managedContext.delete(entry)
+            }
         }
         array.removeAll()
         _ = CoreData.save()
