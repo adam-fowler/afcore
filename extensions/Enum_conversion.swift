@@ -49,11 +49,21 @@ extension UIInterfaceOrientation {
 extension UIViewAnimationCurve {
     /// Convert from UIViewAnimationCurve to UIViewAnimationOptions
     public var animationOption: UIViewAnimationOptions {
-        switch self {
-        case .easeInOut: return .curveEaseInOut
-        case .easeIn: return .curveEaseIn
-        case .easeOut: return .curveEaseOut
-        case .linear: return .curveLinear
+        if #available(iOS 12.0, *) {
+            switch self {
+            case .easeInOut: return .curveEaseInOut
+            case .easeIn: return .curveEaseIn
+            case .easeOut: return .curveEaseOut
+            case .linear: return .curveLinear
+            default: return .curveEaseInOut
+            }
+        } else {
+            switch self {
+            case .easeInOut: return .curveEaseInOut
+            case .easeIn: return .curveEaseIn
+            case .easeOut: return .curveEaseOut
+            case .linear: return .curveLinear
+            }
         }
     }
 }
