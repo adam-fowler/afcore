@@ -37,6 +37,7 @@
 		D19497CF1EDCCAA0003252D3 /* Collection_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19497CE1EDCCAA0003252D3 /* Collection_extension.swift */; };
 		D19497D11EDCCBA5003252D3 /* Array_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19497D01EDCCBA5003252D3 /* Array_extension.swift */; };
 		D1C529421EDD7DA8003C2E68 /* json.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C529411EDD7DA8003C2E68 /* json.swift */; };
+		D1FC004E2154E5DF00A9E4AC /* NSCoder_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FC004D2154E5DF00A9E4AC /* NSCoder_extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		D19497CE1EDCCAA0003252D3 /* Collection_extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Collection_extension.swift; path = extensions/Collection_extension.swift; sourceTree = "<group>"; };
 		D19497D01EDCCBA5003252D3 /* Array_extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Array_extension.swift; path = extensions/Array_extension.swift; sourceTree = "<group>"; };
 		D1C529411EDD7DA8003C2E68 /* json.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = json.swift; path = data/json.swift; sourceTree = "<group>"; };
+		D1FC004D2154E5DF00A9E4AC /* NSCoder_extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NSCoder_extension.swift; path = extensions/NSCoder_extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +181,7 @@
 				D1877A901ED82E0C00E8700B /* UIBarButtonSystemItem_extension.swift */,
 				D1877A911ED82E0C00E8700B /* UIDevice_extension.swift */,
 				D1676F1E205684A5003BBF54 /* Window_extension.swift */,
+				D1FC004D2154E5DF00A9E4AC /* NSCoder_extension.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				D17EA4B120BAFF520005BE22 /* coredataarray.swift in Sources */,
 				D1877A931ED82E0C00E8700B /* Data_extension.swift in Sources */,
 				D19497CF1EDCCAA0003252D3 /* Collection_extension.swift in Sources */,
+				D1FC004E2154E5DF00A9E4AC /* NSCoder_extension.swift in Sources */,
 				D1877AA71ED82E4900E8700B /* http.swift in Sources */,
 				D1877A6C1ED828D500E8700B /* Matrix.swift in Sources */,
 				D1877A961ED82E0C00E8700B /* UIBarButtonSystemItem_extension.swift in Sources */,
