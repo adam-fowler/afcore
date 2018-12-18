@@ -37,6 +37,7 @@
 		D19497CF1EDCCAA0003252D3 /* Collection_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19497CE1EDCCAA0003252D3 /* Collection_extension.swift */; };
 		D19497D11EDCCBA5003252D3 /* Array_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19497D01EDCCBA5003252D3 /* Array_extension.swift */; };
 		D1C529421EDD7DA8003C2E68 /* json.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C529411EDD7DA8003C2E68 /* json.swift */; };
+		D1E4EAA421BA874B00B38636 /* Dictionary_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E4EAA321BA874B00B38636 /* Dictionary_extension.swift */; };
 		D1FC004E2154E5DF00A9E4AC /* NSCoder_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FC004D2154E5DF00A9E4AC /* NSCoder_extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +85,7 @@
 		D19497CE1EDCCAA0003252D3 /* Collection_extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Collection_extension.swift; path = extensions/Collection_extension.swift; sourceTree = "<group>"; };
 		D19497D01EDCCBA5003252D3 /* Array_extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Array_extension.swift; path = extensions/Array_extension.swift; sourceTree = "<group>"; };
 		D1C529411EDD7DA8003C2E68 /* json.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = json.swift; path = data/json.swift; sourceTree = "<group>"; };
+		D1E4EAA321BA874B00B38636 /* Dictionary_extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Dictionary_extension.swift; path = extensions/Dictionary_extension.swift; sourceTree = "<group>"; };
 		D1FC004D2154E5DF00A9E4AC /* NSCoder_extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NSCoder_extension.swift; path = extensions/NSCoder_extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -176,6 +178,7 @@
 				D1877A8C1ED82E0C00E8700B /* CGPoint_extension.swift */,
 				D19497CE1EDCCAA0003252D3 /* Collection_extension.swift */,
 				D1877A8D1ED82E0C00E8700B /* Data_extension.swift */,
+				D1E4EAA321BA874B00B38636 /* Dictionary_extension.swift */,
 				D1877A8E1ED82E0C00E8700B /* Enum_conversion.swift */,
 				D1877A8F1ED82E0C00E8700B /* String_extension.swift */,
 				D1877A901ED82E0C00E8700B /* UIBarButtonSystemItem_extension.swift */,
@@ -327,6 +330,7 @@
 				D1877A971ED82E0C00E8700B /* UIDevice_extension.swift in Sources */,
 				D1877AA01ED82E3000E8700B /* debughelper.m in Sources */,
 				D1877AA51ED82E4900E8700B /* aes.swift in Sources */,
+				D1E4EAA421BA874B00B38636 /* Dictionary_extension.swift in Sources */,
 				D1877A941ED82E0C00E8700B /* Enum_conversion.swift in Sources */,
 				D17EA4B020BAFF520005BE22 /* coredata.swift in Sources */,
 				D17EA4B120BAFF520005BE22 /* coredataarray.swift in Sources */,
