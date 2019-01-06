@@ -53,6 +53,7 @@ public enum Model : String {
 
 public extension UIDevice {
     
+    public var hasNotch: Bool { let system = self.systemType; return system == .iPhoneX || system == .iPhoneXS || system == .iPhoneXSmax || system == .iPhoneXR}
     /// iPhone model type. Gets model name from systemInfo and converts to a more human readable version
     public var systemType: Model {
         var systemInfo = utsname()
