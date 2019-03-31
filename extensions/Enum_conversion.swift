@@ -21,7 +21,7 @@ extension UIDeviceOrientation {
         }
     }
     /// Convert from UIDeviceOrientation to UIImageOrientation
-    public var imageOrientation: UIImageOrientation? {
+    public var imageOrientation: UIImage.Orientation? {
         switch self {
         case .portrait: return .right
         case .portraitUpsideDown: return .left
@@ -46,9 +46,9 @@ extension UIInterfaceOrientation {
     }
 }
 
-extension UIViewAnimationCurve {
+extension UIView.AnimationCurve {
     /// Convert from UIViewAnimationCurve to UIViewAnimationOptions
-    public var animationOption: UIViewAnimationOptions {
+    public var animationOption: UIView.AnimationOptions {
         switch self {
         case .easeInOut: return .curveEaseInOut
         case .easeIn: return .curveEaseIn

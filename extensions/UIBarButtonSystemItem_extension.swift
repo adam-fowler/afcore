@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIBarButtonSystemItem {
+extension UIBarButtonItem.SystemItem {
     
     /// Return UIImage used for bar button system icons.
     /// Warning: do not use this extension if you care about what is in the toolbar at that point

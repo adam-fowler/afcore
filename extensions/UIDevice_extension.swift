@@ -10,7 +10,7 @@ import UIKit
 
 public extension UIDevice {
     
-    public enum Model : String {
+    enum Model : String {
         case simulator   = "simulator/sandbox",
         iPod1            = "iPod 1",
         iPod2            = "iPod 2",
@@ -59,7 +59,7 @@ public extension UIDevice {
         unrecognized     = "?unrecognized?"
     }
     
-    public enum Processor : Int {
+    enum Processor : Int {
         case none = 0
         case a4
         case a5
@@ -78,9 +78,9 @@ public extension UIDevice {
         case a12x
     }
     
-    public var hasNotch: Bool { let system = self.systemType; return system == .iPhoneX || system == .iPhoneXS || system == .iPhoneXSmax || system == .iPhoneXR}
+    var hasNotch: Bool { let system = self.systemType; return system == .iPhoneX || system == .iPhoneXS || system == .iPhoneXSmax || system == .iPhoneXR}
     /// iPhone model type. Gets model name from systemInfo and converts to a more human readable version
-    public var systemType: Model {
+    var systemType: Model {
         var systemInfo = utsname()
         uname(&systemInfo)
         let modelCode = withUnsafePointer(to: &systemInfo.machine) {
@@ -179,7 +179,7 @@ public extension UIDevice {
         return Model.unrecognized
     }
     
-    public static func getProcessor(_ model : Model) -> Processor {
+    static func getProcessor(_ model : Model) -> Processor {
         var processorMap : [Model : Processor] = [
             .iPod4 : .a4,
             .iPod5 : .a5,
@@ -226,7 +226,7 @@ public extension UIDevice {
         return processorMap[model] ?? .none
     }
     
-    public var processor : Processor {
+    var processor : Processor {
         return UIDevice.getProcessor(systemType)
     }
 }

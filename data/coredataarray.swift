@@ -106,11 +106,11 @@ public class CoreDataArray<Type> : CustomDebugStringConvertible where Type:NSMan
     }
     
     public func index(of element:Element) -> Int? {
-        return array.index(of:element)
+        return array.firstIndex(of:element)
     }
     
     public func index(where predicate: (Element)->Bool) -> Int? {
-        return array.index(where: predicate)
+        return array.firstIndex(where: predicate)
     }
     
     public var isEmpty : Bool {return array.isEmpty}
