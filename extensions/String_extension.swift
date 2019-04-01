@@ -33,4 +33,9 @@ extension String {
         replacement = replacement.replacingOccurrences(of: "<", with: "&lt;")
         return replacement.replacingOccurrences(of: ">", with: "&gt;")
     }
+
+    // idea taken from https://medium.com/@marcosantadev/app-localization-tips-with-swift-4e9b2d9672c9
+    public func localized(bundle: Bundle = .main, tableName: String = "general") -> String {
+        return NSLocalizedString(self, tableName: tableName, value: "**\(self)**", comment: "")
+    }
 }
