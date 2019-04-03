@@ -38,4 +38,5 @@ extension String {
     public func localized(bundle: Bundle = .main, tableName: String = "general") -> String {
         return NSLocalizedString(self, tableName: tableName, value: "**\(self)**", comment: "")
     }
+    
 }
