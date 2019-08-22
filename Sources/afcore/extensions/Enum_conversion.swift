@@ -6,6 +6,8 @@
 //  Copyright © 2017 Adam Fowler. All rights reserved.
 //
 
+#if os(iOS)
+
 import UIKit
 import AVFoundation
 
@@ -59,3 +61,4 @@ extension UIView.AnimationCurve {
     }
 }
 
+#endif // os(iOS)

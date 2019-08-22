@@ -6,6 +6,8 @@
 //  Code from http://stackoverflow.com/questions/26028918/ios-how-to-determine-the-current-iphone-device-model-in-swift
 //
 
+#if os(iOS)
+
 import UIKit
 
 public extension UIDevice {
@@ -230,3 +232,5 @@ public extension UIDevice {
         return UIDevice.getProcessor(systemType)
     }
 }
+
+#endif // os(iOS)

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import UIKit
+import debug
 
 /// A non fatal assert that allows you to continue in the debugger
 public func nonfatal_assert(_ condition: @autoclosure () -> Bool, _ message: @autoclosure () -> String = "",
@@ -91,11 +91,16 @@ public class ErrorRecorder {
         guard enabled == true else {return}
         
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+        #if os(iOS)
         let identifier = UIDevice.current.identifierForVendor ?? UUID()
-        let ios = UIDevice.current.systemName
-        let iosVersion = UIDevice.current.systemVersion
+        let os = "\(UIDevice.current.systemName) \(UIDevice.current.systemVersion)"
         let type = UIDevice.current.systemType.rawValue
-        let postDictionary : [String:Any] = ["version":version, "ios":"\(ios) \(iosVersion)", "model":type, "uuid": identifier.description, "assert":message, "file":file, "line":line]
+        #else
+        let identifier = ProcessInfo.processInfo.globallyUniqueString
+        let os = ProcessInfo.processInfo.operatingSystemVersionString
+        let type = "Mac"
+        #endif
+        let postDictionary : [String:Any] = ["version":version, "os":os, "model":type, "uuid": identifier.description, "assert":message, "file":file, "line":line]
         let postData = try! JSONSerialization.data(withJSONObject: postDictionary, options: [])
         
         _ = Http.post(url:url, username:username, password:password, data: postData) { data, response, error in

@@ -6,6 +6,8 @@
 //  Code from https://stackoverflow.com/a/42486823/7831758 by https://stackoverflow.com/users/3451975/dschee
 //
 
+#if os(iOS)
+
 import UIKit
 
 extension UIWindow {
@@ -37,3 +39,4 @@ extension UIWindow {
     }
 }
 
+#endif // os(iOS)

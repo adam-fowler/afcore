@@ -9,6 +9,8 @@
 #ifndef debughelper_h
 #define debughelper_h
 
+#import <Foundation/Foundation.h>
+
 @interface DebugHelper : NSObject
 
 + (void) break;

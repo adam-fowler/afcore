@@ -6,6 +6,8 @@
 //  Code from http://stackoverflow.com/questions/21187885/use-uibarbuttonitem-icon-in-uibutton
 //
 
+#if os(iOS)
+
 import UIKit
 
 extension UIBarButtonItem.SystemItem {
@@ -35,3 +37,4 @@ extension UIBarButtonItem.SystemItem {
     }
 }
 
+#endif // os(iOS)

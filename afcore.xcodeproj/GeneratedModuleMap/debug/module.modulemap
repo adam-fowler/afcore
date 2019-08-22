@@ -1,0 +1,4 @@
+module debug {
+    umbrella "/Users/adamfowler/Documents/dev/iOS/lib/afcore/Sources/debug/include"
+    export *
+}

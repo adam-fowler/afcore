@@ -5,6 +5,7 @@
 //  Created by Adam Fowler on 02/05/2017.
 //  Copyright © 2017 Adam Fowler. All rights reserved.
 //
+#if os(iOS)
 
 import UIKit
 
@@ -169,3 +170,5 @@ extension UIViewController {
         }
     }
 }
+
+#endif // os(iOS)
