@@ -88,7 +88,7 @@ public extension UIDevice {
                 ptr in String.init(validatingUTF8: ptr)
             }
         }
-        var modelMap : [ String : Model ] = [
+        let modelMap : [ String : Model ] = [
             "i386"       : .simulator,
             "x86_64"     : .simulator,
             "iPod1,1"    : .iPod1,
@@ -180,7 +180,7 @@ public extension UIDevice {
     }
     
     static func getProcessor(_ model : Model) -> Processor {
-        var processorMap : [Model : Processor] = [
+        let processorMap : [Model : Processor] = [
             .iPod4 : .a4,
             .iPod5 : .a5,
             .iPod6 : .a8,
