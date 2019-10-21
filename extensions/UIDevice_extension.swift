@@ -37,7 +37,10 @@ public extension UIDevice {
         iPhoneXS         = "iPhone XS",
         iPhoneXSmax      = "iPhone XS Max",
         iPhoneXR         = "iPhone XR",
-        
+        iPhone11         = "iPhone 11",
+        iPhone11Pro      = "iPhone 11 Pro",
+        iPhone11ProMax   = "iPhone 11 Pro Max",
+
         iPad2            = "iPad 2",
         iPad3            = "iPad 3",
         iPad4            = "iPad 4",
@@ -76,6 +79,7 @@ public extension UIDevice {
         case a11
         case a12
         case a12x
+        case a13
     }
     
     var hasNotch: Bool { let system = self.systemType; return system == .iPhoneX || system == .iPhoneXS || system == .iPhoneXSmax || system == .iPhoneXR}
@@ -127,6 +131,9 @@ public extension UIDevice {
             "iPhone11,4" : .iPhoneXSmax,
             "iPhone11,6" : .iPhoneXSmax,
             "iPhone11,8" : .iPhoneXR,
+            "iPhone12,1" : .iPhone11,
+            "iPhone12,3" : .iPhone11Pro,
+            "iPhone12,5" : .iPhone11ProMax,
 
             "iPad2,1"    : .iPad2,
             "iPad2,2"    : .iPad2,
@@ -203,7 +210,10 @@ public extension UIDevice {
             .iPhoneXS : .a12,
             .iPhoneXSmax : .a12,
             .iPhoneXR : .a12,
-            
+            .iPhone11 : .a13,
+            .iPhone11Pro : .a13,
+            .iPhone11ProMax : .a13,
+
             /*            .iPad1 : .a4,*/
             .iPad2 : .a5,
             .iPad3 : .a5x,
