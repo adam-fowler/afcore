@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import data
+@testable import afcore
 
 class dataTests: XCTestCase {
     
@@ -55,7 +55,7 @@ class dataTests: XCTestCase {
     
     func streamSourceDecompress(src : UnsafePointer<UInt8>, srcCount: Int, dest : UnsafeMutablePointer<UInt8>, destCount: Int) -> Bool {
         var status = DataCompressStream.Status.ok
-        var stream = DataCompressStream(dest:dest, count:destCount, operation:.decompress, algorithm: .lz4)
+        let stream = DataCompressStream(dest:dest, count:destCount, operation:.decompress, algorithm: .lz4)
         if let stream = stream {
             var bytes = 0
             while true {
@@ -68,7 +68,7 @@ class dataTests: XCTestCase {
         return status == DataCompressStream.Status.end
     }
     
-    func testDataCompressStreamSource() {
+/*    func testDataCompressStreamSource() {
         let data = createRandomDataBlock(count:4096)
         var decompressed = Data(count:4096)
         let compressed = DataCompress.compress(src: data, algorithm: .lz4)!
@@ -81,9 +81,9 @@ class dataTests: XCTestCase {
 
         XCTAssert(success)
         XCTAssert(compareData(data, decompressed))
-    }
+    }*/
     
-    func streamDestCompress(src : UnsafePointer<UInt8>, srcCount: Int, dest : inout Data, block : inout Data) -> Bool {
+/*    func streamDestCompress(src : UnsafePointer<UInt8>, srcCount: Int, dest : inout Data, block : inout Data) -> Bool {
         var status = DataCompressStream.Status.ok
         let stream = DataCompressStream(src:src, count:srcCount, operation:.compress, algorithm: .lz4)
         if let stream = stream {
@@ -97,9 +97,9 @@ class dataTests: XCTestCase {
             }
         }
         return status == DataCompressStream.Status.end
-    }
+    }*/
     
-    func testDataCompressStreamDest() {
+/*    func testDataCompressStreamDest() {
         let data = createRandomDataBlock(count:4096)
         var compressed = Data()
         var block = Data(count:256)
@@ -113,5 +113,5 @@ class dataTests: XCTestCase {
         decompressed = DataCompress.decompress(src: compressed, dest: &decompressed, algorithm: .lz4)!
         XCTAssert(compareData(data, decompressed))
 
-    }
+    }*/
 }
