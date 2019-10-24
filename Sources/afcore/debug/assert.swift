@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import cdebug
 
 /// A non fatal assert that allows you to continue in the debugger
 public func nonfatal_assert(_ condition: @autoclosure () -> Bool, _ message: @autoclosure () -> String = "",
@@ -17,8 +18,8 @@ public func nonfatal_assert(_ condition: @autoclosure () -> Bool, _ message: @au
             let filename = file.components(separatedBy:"/").last ?? file
             let output : String = "Assert: \(filename):\(line): \(message())"
             print(output)
-            if DebugHelper.isDebuggerAttached() {
-                DebugHelper.break()
+            if isDebuggerAttached() {
+                debugbreak()
             } else {
                 ErrorRecorder.instance?.postMessage("Assert: \(message())", file: filename, line: line);
             }
@@ -34,8 +35,8 @@ public func verify(_ condition: @autoclosure () -> Bool, _ message: @autoclosure
             let filename = file.components(separatedBy:"/").last ?? file
             let output : String = "Verify: \(filename):\(line): \(message())"
             print(output)
-            if DebugHelper.isDebuggerAttached() {
-                DebugHelper.break()
+            if isDebuggerAttached() {
+                debugbreak()
             } else {
                 ErrorRecorder.instance?.postMessage("Verify: \(message())", file: filename, line: line);
             }
@@ -52,14 +53,14 @@ public func fatal_assert(_ condition: @autoclosure () -> Bool, _ message: @autoc
         if !condition() {
             let filename = file.components(separatedBy:"/").last ?? file
             print("Assert: \(filename):\(line): \(message())")
-            if !DebugHelper.isDebuggerAttached() {
+            if !isDebuggerAttached() {
                 var finished = false
                 ErrorRecorder.instance?.postMessage("Assert: \(message())", file: filename, line: line) { finished = true };
                 while !finished {
                     sleep(1)
                 }
             }
-            DebugHelper.trap()
+            trap()
         }
     #endif
 }
@@ -118,3 +119,4 @@ public class ErrorRecorder {
     var username : String
     var password : String
 }
+

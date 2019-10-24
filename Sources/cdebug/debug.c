@@ -1,17 +1,15 @@
+
 //
-//  debughelper.m
-//  debug
+//  debug.c
 //
 //  Created by Adam Fowler on 23/05/2017.
 //  __debugbreak() is from https://stackoverflow.com/questions/44140778/resumable-assert-breakpoint-on-ios
 //
 
-#import <Foundation/Foundation.h>
-
-#import "debughelper.h"
-
+#include <stdbool.h>
 #include <sys/sysctl.h>
 #include <unistd.h>
+#include <assert.h>
 
 #if defined(__APPLE__) && defined(__aarch64__)
 #define __debugbreak() __asm__ __volatile__(            \
@@ -37,21 +35,17 @@
 #error "Unsupported platform while defining __debugbreak()"
 #endif
 
-
-@implementation DebugHelper : NSObject
-
-/// break into debugger
-+ (void) break {
+void debugbreak() {
     __debugbreak();
 }
 
 /// throw trap exception
-+ (void) trap {
+void trap() {
     __builtin_trap();
 }
 
 /// Return if a debugger is attached to the process
-+ (bool) isDebuggerAttached {
+bool isDebuggerAttached() {
     int                 junk;
     int                 mib[4];
     struct kinfo_proc   info;
@@ -78,7 +72,5 @@
     
     // We're being debugged if the P_TRACED flag is set.
     
-    return ( (info.kp_proc.p_flag & P_TRACED) != 0 );    
+    return ( (info.kp_proc.p_flag & P_TRACED) != 0 );
 }
-
-@end

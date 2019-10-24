@@ -9,6 +9,8 @@
 import XCTest
 @testable import afcore
 
+/* Commenting this out as I haven't tested this with latest swift
+
 class dataTests: XCTestCase {
     
     override func setUp() {
@@ -115,3 +117,5 @@ class dataTests: XCTestCase {
 
     }*/
 }
+
+ */

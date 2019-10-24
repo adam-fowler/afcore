@@ -1,17 +1,15 @@
 //
 //  aes.swift
 //  utils
-//  requires CommonCrypto. Module project created from https://github.com/sergejp/CommonCrypto
 //  Created by Adam Fowler on 02/05/2017.
 //  Code based on http://stackoverflow.com/documentation/swift/7026/aes-encryption#t=201705021358094334689
 //
 
 import Foundation
-
-// AES code requires CommonCrypto library. You can find module project here  https://github.com/sergejp/CommonCrypto. I haven't included it in the
-// project for the simple reason I don't want to drag encryption code into projects that don't need it.
 import CommonCrypto
 
+/* Commenting this out as I haven't tested this with latest swift
+ 
 /// class wrapping the CommonCrypto implementations of AES
 /// To use this you also need the CommonCrypto framework which wraps up the C library
 public class AES {
@@ -118,3 +116,4 @@ public class AES {
     
 }
 
+*/

@@ -9,7 +9,9 @@
 import Compression
 import Foundation
 
-public class DataCompress {
+/* Commenting this out as I haven't tested this with latest swift
+
+ public class DataCompress {
     
     /// Compresses data. This function allocates all the buffers required to do the work
     /// - parameters:
@@ -231,3 +233,4 @@ public class DataCompressStream {
     var src : UnsafePointer<UInt8>?
     var stream : compression_stream
 }
+*/
