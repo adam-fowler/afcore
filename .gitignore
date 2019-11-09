@@ -4,6 +4,8 @@
 
 # macOS
 .DS_Store
+# ignore generated xcodeproj
+/*.xcodeproj
 
 ## Build generated
 build/
