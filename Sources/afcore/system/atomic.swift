@@ -4,9 +4,17 @@
 // system
 //
 //  Created by Adam Fowler on 24/10/2019.
+//  Ideas taken from https://www.vadimbulavin.com/atomic-properties/
 //  Copyright © 2019 Adam Fowler. All rights reserved.
 //
 import Foundation
+
+protocol Lock {
+    func lock()
+    func unlock()
+}
+
+extension NSLock: Lock {}
 
 public struct Atomic<T> {
     private var _value: T
@@ -19,14 +27,18 @@ public struct Atomic<T> {
     public var value: T {
         get {
             lock.lock()
+            defer {
+                lock.unlock()
+            }
             let value = _value
-            lock.unlock()
             return value
         }
         set {
             lock.lock()
+            defer {
+                lock.unlock()
+            }
             _value = newValue
-            lock.unlock()
         }
     }
 }
