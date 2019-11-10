@@ -41,4 +41,14 @@ public struct Atomic<T> {
             _value = newValue
         }
     }
+    
+    public mutating func exchange(_ newValue: T) -> T {
+        lock.lock()
+        defer {
+            lock.unlock()
+        }
+        let oldValue = _value
+        _value = newValue
+        return oldValue
+    }
 }
