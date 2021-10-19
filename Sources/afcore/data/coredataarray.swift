@@ -9,7 +9,7 @@
 import CoreData
 
 /// ManagedObject class that only deletes the object it owns if it hasn't been referenced
-public class ManagedObject<Type> where Type:NSManagedObject {
+public class ManagedObject<Type> where Type: NSManagedObject {
     public init(_ object : Type) {
         self._object = object
     }
@@ -28,7 +28,8 @@ public class ManagedObject<Type> where Type:NSManagedObject {
 }
 
 /// CoreData array
-public class CoreDataArray<Type> : CustomDebugStringConvertible where Type:NSManagedObject {
+@available(macOS 10.12, iOS 10.0, tvOS 10.0, watchOS 3.0, *)
+public class CoreDataArray<Type> : CustomDebugStringConvertible where Type: NSManagedObject {
     public typealias Element = Type
     
     public init() {}

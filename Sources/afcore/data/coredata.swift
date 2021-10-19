@@ -8,6 +8,7 @@
 
 import CoreData
 
+@available(macOS 10.12, iOS 10.0, tvOS 10.0, watchOS 3.0, *)
 public class CoreData {
 
     public class func getManagedContext() -> NSManagedObjectContext? {
