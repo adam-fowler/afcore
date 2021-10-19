@@ -9,8 +9,8 @@
 import CoreData
 
 /// ManagedObject class that only deletes the object it owns if it hasn't been referenced
-public class ManagedObject<Type> where Type: NSManagedObject {
-    public init(_ object : Type) {
+public class ManagedObject<Object> where Object: NSManagedObject {
+    public init(_ object : Object) {
         self._object = object
     }
     
@@ -22,15 +22,15 @@ public class ManagedObject<Type> where Type: NSManagedObject {
             }
         }
     }
-    public var object : Type { get { referenced = true; return _object} }
-    private let _object : Type
+    public var object : Object { get { referenced = true; return _object} }
+    private let _object : Object
     private var referenced = false
 }
 
 /// CoreData array
 @available(macOS 10.12, iOS 10.0, tvOS 10.0, watchOS 3.0, *)
-public class CoreDataArray<Type> : CustomDebugStringConvertible where Type: NSManagedObject {
-    public typealias Element = Type
+public class CoreDataArray<Object: NSManagedObject> : CustomDebugStringConvertible {
+    public typealias Element = Object
     
     public init() {}
 
@@ -47,7 +47,7 @@ public class CoreDataArray<Type> : CustomDebugStringConvertible where Type: NSMa
         guard let managedContext = CoreData.getManagedContext() else { return }
         
         // Load array
-        let fetchRequest : NSFetchRequest<Type> = Type.fetchRequest() as! NSFetchRequest<Type>
+        let fetchRequest : NSFetchRequest<Element> = Object.fetchRequest() as! NSFetchRequest<Element>
         fetchRequest.sortDescriptors = sortDescriptors
         
         do {
@@ -57,11 +57,11 @@ public class CoreDataArray<Type> : CustomDebugStringConvertible where Type: NSMa
         }
     }
     
-    public func create() -> Type? {
+    public func create() -> Element? {
         guard let managedContext = CoreData.getManagedContext() else { return nil }
-        let fetchRequest = Type.fetchRequest()
+        let fetchRequest = Element.fetchRequest()
         guard let entity = fetchRequest.entity else {return nil}
-        let entry = Type(entity: entity, insertInto: managedContext)
+        let entry = Element(entity: entity, insertInto: managedContext)
         return entry
     }
     
@@ -117,5 +117,5 @@ public class CoreDataArray<Type> : CustomDebugStringConvertible where Type: NSMa
     public var isEmpty : Bool {return array.isEmpty}
     public var count : Int {return array.count}
     
-    private var array: [Type] = []
+    private var array: [Element] = []
 }
